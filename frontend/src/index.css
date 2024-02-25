@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:  "courier";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  align-items: center;
+  padding: 0rem 3rem;
+  background-color: #fff;
+  margin:0rem;
+}
+.nav_reg{
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  justify-content: center;
+  gap: 0.5rem;
+  padding:0rem 0.5rem;
+  background-color: rgb(226, 231, 236);
+  font-size: small;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.nav_reg:hover{
+  background-color: rgb(214, 218, 223);;
+}
+.nav_menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav_menubar{
+  cursor: pointer;
+  font-size: x-large;
+}
+
+/* home page body */
+.home{
+  display: flex;
+}
+.home_container{
+  background-image: url('../public/home_bg1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items:flex-end;
+  width: 100%;
+  padding: 3rem;
+  height: 81.4vh;
+}
+.home_container>span{
+  color: white;
+  font-size: large;
+  width: 63%;
+}
+.home_container>span>a{
+  color: #fff;
+}
+.home_search{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: 3rem;
+  padding: 1rem 5rem;
+}
+.home_dropdown{
+  display: flex;
+  gap :1rem;
+}
+.search_pannel{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  padding: 0.77rem;
+  width: 40vw;
+}
+.search_pannel>input{
+   border: none;
+   height: 2rem;
+   font-family: "courier";
+   font-size: large;
+   width: 100%;
+}
+.dropbtn{
+  background-color: #fff;
+  padding: 1rem;
+  cursor: pointer;
+  width:10vw;
+  font-size: large;
+  font-family: "courier";
+  border: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.dropdown_pannel{
+  position: relative;
+  font-family: "courier";
+  width: 10vw;
+  display: inline;
+}
+.dropdown_content{
+  background-color: #fff;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: none;
+}
+.dropdown_content>p{
+  padding: 1rem;
+  margin: 0rem;
+}
+.dropdown_content>p:hover{
+  background-color: #ebe3e3;
+}
+
+.dropdown_pannel:hover .dropdown_content{
+  display: block;
+}
+.side_bar{
+  display: none;
+}
+
+
+/* Search bar section */
+
+/* Button for all */
+.button{
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: large;
+  width: 80%;
+  font-family: "courier";
+  cursor: pointer;
+  transition: background-color 400ms ease;
+}
+.button:hover{
+  color: white;
+  background-color: #f7990c;
+}
+/* Login page */
+.login_container{
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.login_form{
+  display: flex;
+  font-size: large;
+  gap:1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+.login_form>hr{
+  width: 80%;
+}
+.login_input{
+  width: 90%;
+  height: 1rem;
+  padding: 1rem;
+  font-family: "courier new";
+  font-size: large;
+  border: none;
+  border-bottom:1px solid black;
+}
+
+
+
+@media only screen and (max-width: 1020px) {
+  .nav{
+    background-color: black;
+    color: #fff;
+  }
+  .nav_menu{
+    font-size: small;
+  }
+  .home_search{
+    flex-direction: column;
+  }
+  .home_container{
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+  .home_container>span{
+    color: white;
+    font-size: large;
+  }
+  .login_form{
+    width: 80%;
+  }
+  
+}
