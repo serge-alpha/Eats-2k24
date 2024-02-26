@@ -10,14 +10,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* -----------------------------------NAV BAR------------------------------------ */
 .nav{
   display: flex;
   justify-content: space-between;
   align-self: center;
   align-items: center;
-  padding: 0rem 3rem;
+  padding: 0rem 2rem;
+  height: 7vh;
   background-color: #fff;
   margin:0rem;
+  position:sticky;
+  top:0;
+  z-index: 2;
+}
+.nav>span:last-child{
+  display: flex;
+  gap: 1rem;
 }
 .nav_reg{
   display: flex;
@@ -27,6 +36,7 @@ code {
   justify-content: center;
   gap: 0.5rem;
   padding:0rem 0.5rem;
+  margin: 1rem 0; 
   background-color: rgb(226, 231, 236);
   font-size: small;
   border-radius: 1rem;
@@ -47,12 +57,64 @@ code {
   font-size: x-large;
 }
 
-/* home page body */
-.home{
+.nav_navigation{
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(226, 231, 236);
+  gap: 6rem;
+}
+.nav_location{
+  background-color: rgb(226, 231, 236);
+  align-items: center;
+  display: flex;
+  font-size: small;
+  padding: 0.8rem;
+  gap: 0.8rem;
+  border-left: #fdfdfd 1px solid;
+  border-right: #fdfdfd 1px solid;
+}
+.nav_delivery{
+  background-color: rgb(226, 231, 236);
+  align-items: center;
+  display: flex;
+  font-size: small;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  gap: 0.8rem;
+}
+.nav_search{
+  background-color: rgb(226, 231, 236);
+  align-items: center;
+  display: flex;
+  align-self: center;
+  font-size: small;
+  padding: 0 0 0 1rem;
+  border-radius: 0.5rem;
+  gap: 0.8rem;
+}
+.nav_search>input{
+  height: 2.5rem;
+  border: none;
+  width: 100%;
+  background-color: rgb(226, 231, 236);
+}
+.delivery{
+  background-color: #fafafa;
+  padding: 0.4rem;
+  border-radius: 1rem;
+}
+.nav_search>span{
+  font-size: large;
+  padding-right: 0.5rem;
+}
+
+/* ---------------------------------------------START PAGE---------------------------------------- */
+.start{
   display: flex;
 }
-.home_container{
-  background-image: url('../public/home_bg1.jpg');
+.start_container{
+  background-image: url('../public/image/start_bg1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -61,60 +123,64 @@ code {
   align-items:flex-end;
   width: 100%;
   padding: 3rem;
-  height: 81.4vh;
+  height: 82.8vh;
 }
-.home_container>span{
+.start_container>span{
   color: white;
   font-size: large;
   width: 63%;
 }
-.home_container>span>a{
+.start_container>span>a{
   color: #fff;
 }
-.home_search{
+.start_search{
   display: flex;
-  gap: 1rem;
+  gap: 0rem;
   align-items: center;
   height: 3rem;
   padding: 1rem 5rem;
 }
-.home_dropdown{
+.start_dropdown{
   display: flex;
-  gap :1rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap :2rem;
 }
 .search_pannel{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
   background-color: #fff;
-  padding: 0.77rem;
+  padding: 0 0.77rem;
   width: 40vw;
 }
 .search_pannel>input{
    border: none;
-   height: 2rem;
+   height: 3.52rem;
    font-family: "courier";
    font-size: large;
    width: 100%;
 }
 .dropbtn{
   background-color: #fff;
-  padding: 1rem;
+  padding: 0.84rem;
   cursor: pointer;
-  width:10vw;
-  font-size: large;
+  width:6rem;
+  height: 100%;
+  font-size: small;
   font-family: "courier";
   border: none;
-  border-radius: 0.5rem 0.5rem 0 0;
 }
-.dropdown_pannel{
+.dropdown_pannel,.dropdown_pannel1{
   position: relative;
   font-family: "courier";
   width: 10vw;
+  padding: 0;
   display: inline;
 }
-.dropdown_content{
+.dropdown_content,.dropdown_content1{
   background-color: #fff;
   cursor: pointer;
   position: absolute;
@@ -123,7 +189,7 @@ code {
   display: none;
 }
 .dropdown_content>p{
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 0rem;
 }
 .dropdown_content>p:hover{
@@ -133,20 +199,24 @@ code {
 .dropdown_pannel:hover .dropdown_content{
   display: block;
 }
+.dropdown_pannel1:hover .dropdown_content1{
+  display: block;
+}
 .side_bar{
   display: none;
 }
 
 
-/* Search bar section */
-
-/* Button for all */
+/* ----------------------------------------BUTTON FOR ALL--------------------------------------------- */
 .button{
   padding: 1rem;
   border-radius: 0.5rem;
   border: none;
-  font-size: large;
+  text-align: center;
+  text-decoration: none;
+  color:#000;
   width: 80%;
+  background-color: #fff;
   font-family: "courier";
   cursor: pointer;
   transition: background-color 400ms ease;
@@ -155,7 +225,7 @@ code {
   color: white;
   background-color: #f7990c;
 }
-/* Login page */
+/* -------------------------------------------LOGIN PAGE------------------------------------------*/
 .login_container{
   height: 90vh;
   display: flex;
@@ -166,7 +236,6 @@ code {
 }
 .login_form{
   display: flex;
-  font-size: large;
   gap:1rem;
   flex-direction: column;
   justify-content: center;
@@ -185,10 +254,103 @@ code {
   border: none;
   border-bottom:1px solid black;
 }
+/* --------------------------------------------HOME CSS ---------------------------------------------*/
 
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 3rem 5rem;
+  height: 100vh;
+}
+.quick_filter{
+  display: flex;
+  gap: 1.5rem;
+  text-align: center;
+}
+.footer{
+  display: flex;
+  justify-content: space-around;
+  gap: 15rem;
+  height: 90vh;
 
+}
+.footer_links>ul>li>a,.footer_links>ul{
+    text-decoration: none;
+    list-style-type: none;
+    color: #000;
+}
+.footer_links>ul>li{
+  padding: 0.5rem;
+}
+.footer_links>ul>li:hover{
+  text-decoration: underline;
+}
+.home_footer{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-top:0.1rem solid black;
+}
+.footer_socials{
+  background-color: #f7990c;
+  width: 100%;
+}
+/* -----------------------------------CARDS CSS---------------------------------------------------------------- */
+.card{
+  width: 25rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.card_body{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
+  height: 20rem;
+  display: flex;
+  padding: 2% 0 25% 0;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card_head{
+  display: flex;
+  justify-content: space-between;
+}
+.card_head>span:first-child{
+  background-color: #f7990c;
+  padding: 0.3rem;
+  border-radius: 0 1rem 1rem 0;
+}
+.card_head>span:last-child{
+  padding-right: 1rem;
+  font-size: x-large;
+}
+.card_ordertype{
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 1rem auto ;
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
-@media only screen and (max-width: 1020px) {
+.card_info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards{
+  display: grid;
+  column-gap: 2%;
+  grid-template-columns: auto auto auto auto;
+  width: 100%;
+  justify-content: center;
+}
+/* --------------------------------------------------------RESPONSIVENESS--------------------------------------- */
+@media only screen and  (max-width: 700px) {
+  /* --------NAV--------------------- */
   .nav{
     background-color: black;
     color: #fff;
@@ -197,7 +359,24 @@ code {
   .nav_menu{
     font-size: small;
   }
-  .home_search{
+  .nav_menu>h1{
+    font-size: large;
+  }
+  .nav_reg{
+    padding:0 0.2rem;
+    gap: 0.2rem;
+    background-color: transparent;
+    color: #ebe3e3;
+    border-radius: 0.2rem;
+  }
+  .nav_reg>p{
+    display: none;
+  }
+  .nav_navigation{
+    display: none;
+  }
+  /* ----------------------START PAGE------------------ */
+  .start_search{
     flex-direction: column;
     width: 100%;
     gap:1.5rem;
@@ -206,28 +385,72 @@ code {
   .search_pannel,.dropdown_pannel{
     width: 100%;
   }
-  .home_dropdown,.dropbtn{
+  .start_dropdown,.dropbtn{
     width: 100%;
     margin: 0;
     max-height:3rem ;
     font-size: small;
   }
  
-  .home_container{
+  .start_container{
     align-items: center;
     justify-content: space-around;
     gap: 1rem;
     height: 82.7vh;
     width: 100%;
   }
-  .home_container>span{
+  .start_container>span{
     color: white;
     font-size: large;
     width: 100%;
     text-align: center;
   }
+  /* ---------------------LOGIN PAGE--------------------- */
   .login_form{
     width: 80%;
   }
-  
+  .login_input{
+    font-size: medium;
+  }
+  /* --------------------HOME-------------------------- */
+.category_filter{
+  display: none;
+}
+  /* ---------------------CARDS--------------------- */
+  .cards{
+    grid-template-columns: auto;
+  }
+  .card{
+    width: 20rem;
+    height: 20rem;
+  }
+  /* ------------------FOOTER------------------- */
+  .footer{
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width:1200px){
+  /* ---------------------CARD----------------------- */
+  .cards{
+      grid-template-columns: auto auto;
+      column-gap: 10%;
+  }
+  .card{
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+@media only screen and (min-width:1200px) and (max-width:1700px){
+  /* ---------------------CARD----------------------- */
+  .cards{
+      grid-template-columns: auto auto auto;
+      column-gap: 10%;
+  }
+  .card{
+    width: 20rem;
+    height: 20rem;
+  }
 }

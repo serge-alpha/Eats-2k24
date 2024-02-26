@@ -5,7 +5,7 @@ const Button=(data)=>{
     const {value,link} = data;
 
     return(
-        <NavLink to={link} className="nav_reg  button"><b>{value}</b></NavLink>
+        <NavLink to={link} className="button" ><b>{value}</b></NavLink>
     )
 }
 
