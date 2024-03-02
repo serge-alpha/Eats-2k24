@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import FoodCards from "../components/FoodCards";
-import FoodModal from "../components/FoodModal";
+
 
 const Home =()=>{
     return(

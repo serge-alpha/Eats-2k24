@@ -3,7 +3,6 @@
  import { AiOutlineMenu} from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
 
  const Nav =()=>{
     const [orderType,setOrderType] = useState(0);

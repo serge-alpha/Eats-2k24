@@ -257,7 +257,7 @@ code {
 .login_btn{
   margin: 1rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
 }
 .login_btn>a{
