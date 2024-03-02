@@ -1,18 +1,18 @@
 import React from "react";
-import FoodCard from "./FoodCard";
+import Foodcard from "./FoodCard";
 
-const FoodCards =()=>{
+const Foodcards =()=>{
     return(
         <div className="cards">
-            <FoodCard/>
-            <FoodCard/>
-            <FoodCard/>
-            <FoodCard/>
-            <FoodCard/>
-            <FoodCard/>
-            <FoodCard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
         </div>
     )
 }
 
-export default FoodCards;
+export default Foodcards;

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AiFillEnvironment } from "react-icons/ai";
 import { AiFillClockCircle } from "react-icons/ai";
 import { AiFillCalendar } from "react-icons/ai";
-import Button from "../components/Button";
 import { NavLink } from "react-router-dom";
 
 
@@ -20,9 +19,6 @@ const StartPage =()=>{
     }
     return(
             <div className="start">
-                <div className="side_bar">
-                    Hallo
-                </div>
                 <div className="start_container">
                     <div className="start_search">  
                         <div className="search_pannel">
@@ -37,10 +33,10 @@ const StartPage =()=>{
                                         <p onClick={()=>deliveryTime(0)}><AiFillCalendar/> Plan for later</p>
                                     </div>
                             </div>
-                            <Button value="Find" link="/home"/>  
+                            <NavLink to="/home" className="button"><b>Find</b></NavLink>
                         </div>   
                     </div>
-                    <span><NavLink to="/login">login</NavLink> or</span>
+                    <span>or <NavLink to="/login">login</NavLink></span>
                 </div>
                 
 

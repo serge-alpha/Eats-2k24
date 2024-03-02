@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
+import { IconContext } from "react-icons";
 
-const FoodCard =()=>{
+const Foodcard =()=>{
     const [fav,setFAv]=useState("AiOutlineHeart")
     const favourite=()=>{
         if (fav==="AiOutlineHeart"){
@@ -14,12 +15,12 @@ const FoodCard =()=>{
         
     }
     return(
-        <div className="card"> 
+        <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
             <div className="card_body">
                 <div className="card_head">
                     <span>Special offer</span>
                     <span onClick={()=>favourite()}>
-                       {fav==="AiOutlineHeart"?<AiOutlineHeart />: <AiFillHeart />} 
+                       {fav==="AiOutlineHeart"?<AiOutlineHeart />: <IconContext.Provider value={{ color: "#f7990c"}}><AiFillHeart /></IconContext.Provider>} 
                     </span>
                 </div>
                 <div className="card_ordertype">
@@ -29,7 +30,7 @@ const FoodCard =()=>{
             </div>
             <div className="card_info">
                     <span>
-                        <h3>Garri and Eru</h3>
+                        <h3><b>Garri and Eru</b></h3>
                         <p> 30-40mins</p>
                     </span>
                    <span>(4.0)</span>
@@ -38,4 +39,4 @@ const FoodCard =()=>{
     )
 }
 
-export default FoodCard;
+export default Foodcard;

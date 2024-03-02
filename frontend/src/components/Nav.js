@@ -27,7 +27,7 @@ import { AiOutlineSearch } from "react-icons/ai";
                     <span>Now</span>
                 </div>
                 <div className="nav_search">
-                    <span><AiOutlineSearch /></span>
+                    {/* <span><AiOutlineSearch /></span> */}
                     <input type="search" placeholder="S e a r c h  M e a l "/>   
                 </div>
             </div>
