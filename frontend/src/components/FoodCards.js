@@ -11,6 +11,10 @@ const Foodcards =()=>{
             <Foodcard/>
             <Foodcard/>
             <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
+            <Foodcard/>
         </div>
     )
 }
