@@ -25,10 +25,11 @@ import { BsCart } from "react-icons/bs";
                     <span>Location.</span>
                     <span>Now</span>
                 </div>
-                <div className="nav_search">
-                    {/* <span><AiOutlineSearch /></span> */}
+                {/* <div className="nav_search">
+                     <span><AiOutlineSearch /></span>
                     <input type="search" placeholder="S e a r c h  M e a l "/>   
-                </div>
+                </div> */}
+                    <input type="search" className="nav_search" placeholder="S e a r c h  M e a l "/>     
             </div>
             <span>
                 <NavLink to="/login" className="nav_reg"><BsCart/><p> Order</p>2</NavLink>

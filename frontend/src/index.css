@@ -90,23 +90,18 @@ code {
   gap: 1rem;
 }
 .nav_search{
-  /* background-color: rgb(226, 231, 236); */
   background-color: rgb(226, 231, 236);
   align-items: center;
   display: flex;
   width: 100%;
   align-self: center;
-  padding: 0 1.2rem 0 1.2rem;
+  padding: 0 1.2rem 0 2rem;
   border-radius: 2rem;
   gap: 0.8rem;
-}
-.nav_search>input{
   height: 3.3rem;
-  padding: 1rem;
   border: none;
   width: 100%;
   font-weight: 600;
-  background-color: rgb(226, 231, 236);
 }
 .delivery{
   background-color: #fafafa;
@@ -239,20 +234,24 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  /* padding: auto 1rem; */
+  
 }
 .login_form{
   display: flex;
-  gap:1rem;
+  gap:2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  border: 1px solid #8f5c0f;
+  border-radius: 1rem;
+  padding:5rem 2rem 2rem 2rem;
+  width: 40%;
 }
 .login_btn{
   margin: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
 }
 .login_btn>a{
@@ -266,30 +265,16 @@ code {
   height: 1rem;
   padding: 1rem;
   font-family: "courier new";
-  font-size: large;
+  font-size: medium;
   border: none;
   border-bottom:1px solid black;
 }
-.register_name{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-.register_number{
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  gap: 3rem;
-}
-.register_buttons{
-  padding: 1rem;
-  display: flex;
-  gap: 60%;
-  justify-content: space-between;
-  width: 100%;
-}
-.register_buttons>a{
 
-  border: 1px solid black;
+.login_form>p>a:last-child{
+  color:#8f5c0f;
+}
+.login_form>p>a:last-child:hover{
+  color: #000;
 }
 /* --------------------------------------------HOME CSS ---------------------------------------------*/
 .body{
@@ -354,6 +339,7 @@ code {
   width: 25rem;
   height: 25rem;
   display: flex;
+  margin: 1rem;
   flex-direction: column;
   gap: 0.3rem;
 }
@@ -364,6 +350,9 @@ code {
   padding: 2% 0 25% 0;
   flex-direction: column;
   justify-content: space-between;
+}
+.card_body:hover{
+  cursor: pointer;
 }
 .card_head{
   display: flex;
@@ -400,6 +389,53 @@ code {
   width: 100%;
   height: 100%;
   justify-content: center;
+}
+/* ==-----------------------------------------------------RESTUARANT CSS------------------------------------ */
+.add_rest{
+color:#7e7c7c;
+}
+.restuarant{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 3rem;
+}
+.restuarant_checkbox{
+  display: flex;
+  width: 45%;
+  justify-content: center;
+  align-items: center;
+}
+.restuarant_dist{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.add_card{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
+  height: 20rem;
+  display: flex;
+  font-size: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+.add_card:hover{
+  cursor: pointer;
+  background-color: #fafafa;
+}
+.add_card>span{
+  transform: rotate(45deg);
+}
+.restbtn{
+  border: 1px solid black;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color:#000;
+  background-color: #fff;
+  font-family: "courier";
+  cursor: pointer;
+  transition: background-color 400ms ease;
 }
 /* --------------------------------------------------------RESPONSIVENESS--------------------------------------- */
 @media only screen and  (max-width: 700px) {
@@ -438,18 +474,18 @@ code {
   .nav{
     background-color: black;
     display: grid;
-    justify-content: end;
     grid-template-areas: 'logo btns'
     'info info';
     color: #fff;
     height: 100%;
-    padding:0 0.5rem 0.5rem 0.5rem ;
+    padding:0 1rem 0.5rem 1rem ;
   }
   .nav_delivery{
     grid-area: nav1;
-    padding: 0.001rem;
+    /* padding: 0.001rem; */
+    padding: 0;
     color: #000;
-    width: 50vw;
+    width: 40vw;
   }
   .nav_location{
     padding: 0.9rem;
