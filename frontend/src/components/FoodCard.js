@@ -4,19 +4,21 @@ import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Foodcard =()=>{
+const Foodcard =({prop})=>{
     const [fav,setFAv]=useState("AiOutlineHeart")
     const favourite=()=>{
         if (fav==="AiOutlineHeart"){
            return setFAv("AiFillHeart")
         }else{
            return  setFAv("AiOutlineHeart")
-        }
-        
+        } 
+    }
+    const openModal=()=>{
+      prop("modal")
     }
     return(
-        <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
-            <div className="card_body">
+        <div className="card"> 
+            <div className="card_body" onClick={openModal}>
                 <div className="card_head">
                     <span>Special offer</span>
                     <span onClick={()=>favourite()}>
