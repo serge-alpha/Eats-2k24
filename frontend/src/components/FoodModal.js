@@ -3,19 +3,18 @@ import { NavLink } from "react-router-dom";
 import { BsFillXCircleFill,BsCaretLeftFill,BsCaretRightFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const FoodModal=({modalstate})=>{ 
+const FoodModal=({prop})=>{ 
     const [quantity, setQuantity]=useState(1);
-    const[state,setState]=useState(modalstate);
     const quantityOnChange=(value)=>{
         if(quantity!==0 || value>0){
             setQuantity(quantity+value);
         }   
     } 
     const closeModal=()=>{
-        setState("xmodal");
+        prop("close");
     }
     return(
-        <div className={state}>
+        <div className="modal">
             <div className="modal_close" onClick={closeModal}>
                <IconContext.Provider value={{color:"#f7990c", size:"1.5em"}}><BsFillXCircleFill /></IconContext.Provider> 
             </div>

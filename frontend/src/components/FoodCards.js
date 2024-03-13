@@ -3,23 +3,24 @@ import Foodcard from "./FoodCard";
 import FoodModal from "./FoodModal";
 
 const Foodcards =()=>{
-    const [modalstate,setModalState] =useState('xmodal')
+    const [modalstate,setModalState] =useState("close")
     const fun=(value)=>{
         setModalState(value)
     }
+
     return(
-        <div className="cards close">
+        <div className={modalstate==="close"?"cards close":"cards"}>
             <Foodcard prop={fun}/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            <Foodcard/>
-            {modalstate==="xmodal"?<></>:<FoodModal modalstate="modal"/>}
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <Foodcard  prop={fun}/>
+            <FoodModal prop={fun}/>
         </div>
     )
 }

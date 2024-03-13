@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
+import Cart from "../components/Cart";
 
 
-const Home =()=>{
+const Home =({cart_prop})=>{
+    const [cartstatus,setCartStatus]=useState(cart_prop)
+    const cartStatus =(value)=>{
+        setCartStatus(value)
+        
+    }
     return(
         <div className="body">
-             {/* <FoodModal/>  */}
-            <div className="home">
+            <div className={cartstatus==="close"?"home closecart":"home"}>
                 <div className="quick_filter">
                     <span className="filter">
                     <img className="fast_food" alt="fastfood"/> 
@@ -22,6 +27,7 @@ const Home =()=>{
                     <h5>Pastries</h5>
                     </span>
                 </div>
+                <Cart cart_prop={cartStatus}/>
                 <div className="category_filter">
                     <hr/>
                     <div className="dropdown_pannel1">

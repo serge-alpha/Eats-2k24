@@ -298,6 +298,9 @@ code {
   padding: 3rem 5rem;
   height: 100%;
 }
+.closecart .cart{
+  display: none;
+}
 .quick_filter{
   display: flex;
   gap: 1.5rem;
@@ -408,17 +411,15 @@ code {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 5rem;
+  gap:5rem;
 }
 .modal_close{
   width: 100%;
-  align-items: flex-start;
 }
 .modal_close>svg{
   cursor: pointer;
 }
-.close
-  .xmodal{
+.close .modal{
     display: none;
   
 }
@@ -448,12 +449,53 @@ code {
   align-items: center;
   gap: 1rem;
 }
+.modal_btn{
+  margin: 1rem;
+  align-items: center;
+}
 .quantity{
 cursor: pointer;
 }
+            /* ====================cart==================== */
+            .cart{
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              position: fixed;
+              justify-content: space-between;
+              align-items: flex-end;
+              z-index: 3;
+              height: auto;
+              min-height: 20vh;
+              width: 20vw;
+              top:4rem;
+              right: 10px;
+              padding: 15px;
+              background-color: #e7e7e5;
+              box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
+            }
+            .cart_close>svg{
+              width: 100%;
+              align-items: flex-end;
+            }
+            .cart_info>h2{
+              overflow-wrap: break-word;
+            }
+            .cart_info{
+              width: 100%;
+              border-bottom: 1px solid #7e7c7c;
+            }
 /* ==-----------------------------------------------------RESTUARANT CSS------------------------------------ */
 .add_rest{
 color:#7e7c7c;
+width: 100%;
+display: flex;
+gap:2rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding:5rem 2rem 2rem 2rem;
+/* width: 40%; */
 }
 .restuarant{
   display: flex;
@@ -501,6 +543,17 @@ color:#7e7c7c;
   cursor: pointer;
   transition: background-color 400ms ease;
 }
+.meal_form{
+  display: flex;
+  gap: 1rem;
+  background-color: #e7e7e5;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
+  margin: 1rem auto;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 74vw;
+}
 .meal_discount{
   display: flex;
   gap: 2rem;
@@ -514,6 +567,20 @@ color:#7e7c7c;
   padding: 0.2rem 0.5rem;
   border-radius: 10px;
   color: #000;
+}
+.meal_img{
+  background-color: #e7e7e5;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.meal_img>svg{
+  transform: rotate(45deg);
+  font-size: 5em;
 }
 /* --------------------------------------------------------RESPONSIVENESS--------------------------------------- */
 @media only screen and  (max-width: 700px) {

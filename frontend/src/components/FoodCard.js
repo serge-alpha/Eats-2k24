@@ -14,7 +14,7 @@ const Foodcard =({prop})=>{
         } 
     }
     const openModal=()=>{
-      prop("modal")
+      prop('open')
     }
     return(
         <div className="card"> 
