@@ -1,9 +1,10 @@
 import React from "react";
 import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
+import Cart from "../components/Cart";
 
 
-const Home =()=>{
+const HomeCart =()=>{
     return(
         <div className="body">
             <div className="home">
@@ -52,9 +53,10 @@ const Home =()=>{
                             </div>
                     </div>
                 </div>
+                <Cart/>
                 <div className="card_rows">
                     <h2><b>Deliveries for less than 1000 CFA</b></h2>
-                    <FoodCards />
+                    <FoodCards/>
                 </div>
                 
             </div>
@@ -64,4 +66,4 @@ const Home =()=>{
     )
 }
 
-export default Home;
+export default HomeCart;

@@ -9,20 +9,25 @@ import Register from "../pages/Register";
 import AddRestaurant from "../pages/AddRestaurant";
 import Restaurant from "../pages/Restaurant";
 import AddMeal from "../pages/AddMeal";
+import HomeCart from "../pages/HomeCart";
 
 const Index=()=>{
-    const [cartStatus,setCartStatus]=useState("close")
-    const CartStatus=(value)=>{
-        setCartStatus(value)
-        console.log(cartStatus)
+    const[cart,setCart]=useState([])
+
+    const AddToCart=(item)=>{
+        setCart((cart)=>{
+            return{...cart,item}
+        });
     }
     return(
         <BrowserRouter>
-            <Nav cart_prop={CartStatus}/>
+            <Nav cart={cart}/>
             <Routes>
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/home" element={ cartStatus==="open"?<Home cart_prop="open"/>:<Home cart_prop="close"/>}/>
+                <Route path="/home" element={ <Home /> }/>
+                {/* addcart={AddToCart()} */}
+                <Route path="/home-cart" element={ <HomeCart cart={cart}/> }/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
                 <Route path="/restaurant" element={<Restaurant/>}></Route>

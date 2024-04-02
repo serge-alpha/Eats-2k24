@@ -13,6 +13,7 @@ const FoodModal=({prop})=>{
     const closeModal=()=>{
         prop("close");
     }
+  
     return(
         <div className="modal">
             <div className="modal_close" onClick={closeModal}>
@@ -24,7 +25,7 @@ const FoodModal=({prop})=>{
                 </div>
                 <div className="modal_info">
                     <span>
-                        <h3>Garri and Eru...............................................</h3>
+                        <h3>Garri and Eru</h3>
                         <h4>1500XFA</h4>
                     </span>
                     <span className="modal_quantity">
@@ -33,7 +34,7 @@ const FoodModal=({prop})=>{
                         <p>{quantity}</p>
                         <span className="quantity"onClick={()=>quantityOnChange(1)}><IconContext.Provider value={{size:"1.5em"}}><BsCaretRightFill /></IconContext.Provider></span>
                     </span>
-                    <span className="modal_btn ">
+                    <span className="modal_btn " onClick={closeModal}>
                         <NavLink className="button">Order for {quantity} .<b>{quantity*1500}</b></NavLink>
                     </span>
                 </div>

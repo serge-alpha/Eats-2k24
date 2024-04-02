@@ -38,8 +38,6 @@ const StartPage =()=>{
                     </div>
                     <span>or <NavLink to="/login">login</NavLink></span>
                 </div>
-                
-
             </div>
     )
 };

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +15,7 @@ code {
 /* -----------------------------------nav BAR------------------------------------ */
 .nav{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-self: center;
   align-items: center;
   padding: 0rem 2rem;
@@ -22,6 +23,7 @@ code {
   background-color: #ffffff;
   margin:0rem;
   position:sticky;
+  width: 100%;
   top:0;
   z-index: 2;
 }
@@ -125,7 +127,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  align-items:flex-end;
+  align-items:center;
   width: 100%;
   padding: 3rem;
   height: 82.8vh;
@@ -335,6 +337,8 @@ code {
 .footer_socials{
   background-color: #f7990c;
   font-size: large;
+  display: flex;
+  justify-content: center;
   padding: 1rem;
 }
 /* -----------------------------------cardS CSS---------------------------------------------------------------- */
@@ -695,6 +699,10 @@ padding:5rem 2rem 2rem 2rem;
   .card{
     width: 20rem;
     height: 20rem;
+  }
+  /* ------------------------RESTURANT------------------ */
+  .meal_form{
+    flex-direction: column;
   }
   /* ------------------FOOTER------------------- */
   .footer{
