@@ -4,7 +4,7 @@
 import { NavLink } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
 
- const Nav =({cart})=>{
+ const Nav =()=>{
     const [orderType,setOrderType] = useState(0);
     const orderChoice=()=>{
         if (orderType===0){
@@ -28,7 +28,7 @@ import { BsCart } from "react-icons/bs";
                 <input type="search" className="nav_search" placeholder="S e a r c h  M e a l "/>     
             </div>
             <span>
-                <NavLink to="/home-cart" className="nav_reg" ><BsCart/><p> Order</p>{cart.lenght}</NavLink>
+                <NavLink to="/home-cart" className="nav_reg" ><BsCart/><p> Order</p>2</NavLink>
                 <NavLink to="/login" className="nav_reg"><AiOutlineUser/><p> Register</p></NavLink>
             </span>
             
