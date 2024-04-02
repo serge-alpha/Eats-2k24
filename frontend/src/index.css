@@ -23,7 +23,7 @@ code {
   background-color: #ffffff;
   margin:0rem;
   position:sticky;
-  width: 100%;
+  /* width: 100%; */
   top:0;
   z-index: 2;
 }
