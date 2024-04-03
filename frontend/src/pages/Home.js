@@ -3,7 +3,7 @@ import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
 
 
-const Home =({addcart})=>{
+const Home =()=>{
     return(
         <div className="body">
             <div className="home">
@@ -54,7 +54,7 @@ const Home =({addcart})=>{
                 </div>
                 <div className="card_rows">
                     <h2><b>Deliveries for less than 1000 CFA</b></h2>
-                    <FoodCards addcart={addcart()} />
+                    <FoodCards/>
                 </div>
                 
             </div>

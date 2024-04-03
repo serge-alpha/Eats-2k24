@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BsFillXCircleFill,BsCaretLeftFill,BsCaretRightFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const FoodModal=({prop,addcart})=>{ 
+const FoodModal=({prop})=>{ 
     const [quantity, setQuantity]=useState(1);
     const quantityOnChange=(value)=>{
         if(quantity!==0 || value>0){
