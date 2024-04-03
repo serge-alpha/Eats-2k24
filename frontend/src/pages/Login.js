@@ -8,7 +8,7 @@ const Login=()=>{
                 <input type="email" name="email"  className="login_input" placeholder="What's your email?"/>
                 <input type="password" name="password"  className="login_input" placeholder="Enter Password"/>
                 <span className="login_btn">
-                    <NavLink to="/login" className="button" ><b>Login</b></NavLink>
+                    <NavLink to="/home" className="button" ><b>Login</b></NavLink>
                 </span>     
                 <p>or <NavLink to="/register">sign in</NavLink></p>           
             </form>

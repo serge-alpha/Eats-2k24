@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Foodcard from "./FoodCard";
 import FoodModal from "./FoodModal";
 
-const Foodcards =()=>{
+const Foodcards =({addcart})=>{
     const [modalstate,setModalState] =useState("close")
     const fun=(value)=>{
         setModalState(value)

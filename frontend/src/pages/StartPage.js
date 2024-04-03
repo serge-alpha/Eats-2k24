@@ -25,7 +25,7 @@ const StartPage =()=>{
                             <span><AiFillEnvironment /></span>
                             <input type="search"  placeholder="Enter your location"></input>
                         </div>
-                        <div className="start_dropdown">        
+                        <div className="start_dropdown">     
                             <div className="dropdown_pannel">
                                 <button className="dropbtn">{orderType}</button>
                                     <div className="dropdown_content">
@@ -33,7 +33,7 @@ const StartPage =()=>{
                                         <p onClick={()=>deliveryTime(0)}><AiFillCalendar/> Plan for later</p>
                                     </div>
                             </div>
-                            <NavLink to="/home" className="button"><b>Find</b></NavLink>
+                            <NavLink to="/home"><b>Find</b></NavLink>
                         </div>   
                     </div>
                     <span>or <NavLink to="/login">login</NavLink></span>

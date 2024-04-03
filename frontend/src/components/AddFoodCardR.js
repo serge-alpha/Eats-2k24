@@ -9,8 +9,9 @@ const AddFoodCardR =()=>{
             <div className="add_card">
                     <span>
                         <NavLink to="/restaurant/add-meal"><BsXCircle /></NavLink>
-                    </span>
+                    </span>                    
             </div>
+            <p>Add Meal</p>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Nav from "../components/Nav";
@@ -12,14 +12,18 @@ import AddMeal from "../pages/AddMeal";
 import HomeCart from "../pages/HomeCart";
 
 const Index=()=>{
+    const [cart,setCart]=useState(0);
+
+    const AddToCart=(value)=>{
+        return setCart({...cart,value})
+    }
     return(
         <BrowserRouter>
             <Nav/>
             <Routes>
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/home" element={ <Home /> }/>
-                {/* addcart={AddToCart()} */}
+                <Route path="/home" element={ <Home addcart={()=>AddToCart()} /> }/>
                 <Route path="/home-cart" element={ <HomeCart /> }/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
