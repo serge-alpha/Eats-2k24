@@ -242,6 +242,7 @@ code {
 .button{
   padding: 0.6rem;
   border-radius: 0.5rem;
+  width: max-content;
   border: none;
   text-decoration: none;
   color:#000;
@@ -451,6 +452,8 @@ code {
 }
 .modal_close{
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 .modal_close>svg{
   cursor: pointer;
@@ -461,7 +464,8 @@ code {
 }
 .modal_body{
   display: grid;
-  grid-template-columns: auto auto;
+  /* grid-template-columns: auto auto; */
+  grid-template-areas: "img img  info";
   width: 100%;
   justify-content: space-around;
   gap: 2rem;
@@ -469,11 +473,13 @@ code {
 .modal_img{
   height: 55vh;
   width: 35vw;
+  grid-area: img;
   background-color:#f7990c;
 }
 .modal_info{
-  width: 30vw;
+  width: 100%;
   display: flex;
+  grid-area: info;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -496,16 +502,13 @@ cursor: pointer;
             .cart{
               display: flex;
               flex-direction: column;
-              position: absolute;
               position: fixed;
               justify-content: space-between;
               align-items: flex-end;
-              z-index: 3;
+              margin: 2vh 3vw;
               height: auto;
               min-height: 20vh;
-              min-width: 20vw;
-              top:4rem;
-              right: 10px;
+              width:90vw ;
               padding: 15px;
               background-color: #e7e7e5;
               box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
@@ -649,7 +652,7 @@ padding:5rem 2rem 2rem 2rem;
   .nav_navigation{
     display: none;
     grid-area: info;
-    display: grid;
+    /* display: grid; */
     justify-content: center;
     grid-template-areas: 'nav1 nav2' 'nav3 nav3';
     margin: 0;
@@ -657,6 +660,7 @@ padding:5rem 2rem 2rem 2rem;
   .nav>span:last-child{
     grid-area: btns;
     justify-content: flex-end;
+    margin-left: 25vw;
   }
   .nav{
     background-color: black;
@@ -739,10 +743,22 @@ padding:5rem 2rem 2rem 2rem;
   .category_filter{
     display: none;
   }
-  .cart{
-    margin: auto;
-    width:88vw;
+  .modal{
+    gap: 1rem;
+    top: 16%;
+    left: 2.5%;
   }
+  .modal_img{
+    height: 30vh;
+    width: 60vw;
+  }
+  .modal_body{
+    grid-template-areas: "img img" "info info";
+   }
+   .cart{
+    margin:auto;
+    width: 95vw;
+   }
   /* ---------------------cardS--------------------- */
   .cards{
     grid-template-columns: auto;
@@ -763,6 +779,7 @@ padding:5rem 2rem 2rem 2rem;
 }
 
 @media only screen and (min-width:600px) and (max-width:1200px){
+
   /* ---------------------card----------------------- */
   .nav_menu{
     font-size: small;
@@ -774,19 +791,15 @@ padding:5rem 2rem 2rem 2rem;
     grid-area: info;
     justify-content: flex-start;
     margin: 0.5rem;
-    /* padding-right: 2rem; */
   }
   .nav>span:last-child{
     grid-area: btns;
     justify-content: flex-end;
-  }
-  .nav_menubar{
-    display: block;
-    background-color: blue;
+    margin-left: 25vw;
   }
   .nav{
     display: grid;
-    align-content: space-around;
+    align-content: space-evenly;
     grid-template-areas: 'logo btns'
     'info info';
     height: 100%;
@@ -801,6 +814,13 @@ padding:5rem 2rem 2rem 2rem;
   }
   .nav_delivery{
     font-size: smaller;
+  }
+  .modal_img{
+    height: 30vh;
+    width: 60vw;
+  }
+  .modal_body{
+   grid-template-areas: "img img" "info info";
   }
   .start_dropdown>a{
     color: #000;
@@ -839,6 +859,9 @@ padding:5rem 2rem 2rem 2rem;
   .cards{
       grid-template-columns: auto auto auto;
       column-gap: 10%;
+  }
+  .modal_body{
+    grid-template-rows: auto auto;
   }
   .card{
     width: 20rem;

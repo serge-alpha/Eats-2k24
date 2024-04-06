@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Nav from "../components/Nav";
@@ -9,17 +9,22 @@ import Register from "../pages/Register";
 import AddRestaurant from "../pages/AddRestaurant";
 import Restaurant from "../pages/Restaurant";
 import AddMeal from "../pages/AddMeal";
-import HomeCart from "../pages/HomeCart";
+import Cart from "../pages/Cart";
+
 
 const Index=()=>{
+    const [order,setOrder] =useState("0");
+    const Order =(data)=>{
+        setOrder(data)
+    }
     return(
         <BrowserRouter>
-            <Nav/>
+            <Nav order={order}/>
             <Routes>
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/home" element={ <Home /> }/>
-                <Route path="/home-cart" element={ <HomeCart /> }/>
+                <Route path="/home" element={ <Home getOrder={Order}/> }/>
+                <Route path="/home-cart" element={ <Cart/> }/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
                 <Route path="/restaurant" element={<Restaurant/>}></Route>

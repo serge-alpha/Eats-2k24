@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BsFillXCircleFill,BsCaretLeftFill,BsCaretRightFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const FoodModal=({prop})=>{ 
+const FoodModal=({prop,value,item})=>{ 
     const [quantity, setQuantity]=useState(1);
     const quantityOnChange=(value)=>{
         if(quantity!==0 || value>0){
@@ -11,7 +11,9 @@ const FoodModal=({prop})=>{
         }   
     } 
     const closeModal=()=>{
+        value(quantity);
         prop("close");
+        setQuantity(1);
     }
   
     return(
@@ -25,8 +27,8 @@ const FoodModal=({prop})=>{
                 </div>
                 <div className="modal_info">
                     <span>
-                        <h3>Garri and Eru</h3>
-                        <h4>1500XFA</h4>
+                        <h3>{item.name}</h3>
+                        <h4>{item.price}XFA</h4>
                     </span>
                     <span className="modal_quantity">
                         <h4>Quantity</h4>

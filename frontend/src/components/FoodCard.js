@@ -4,7 +4,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Foodcard =({prop})=>{
+const Foodcard =({prop,item})=>{
     const [fav,setFAv]=useState("AiOutlineHeart")
     const favourite=()=>{
         if (fav==="AiOutlineHeart"){
@@ -14,7 +14,7 @@ const Foodcard =({prop})=>{
         } 
     }
     const openModal=()=>{
-      prop('open')
+      prop(item)
     }
     return(
         <div className="card"> 
@@ -36,7 +36,7 @@ const Foodcard =({prop})=>{
             </div>
             <div className="card_info">
                     <span>
-                        <h3><b>Garri and Eru</b></h3>
+                        <h3><b>{item.name}</b></h3>
                         <p> 30-40mins</p>
                     </span>
                     <span>4.0</span>             

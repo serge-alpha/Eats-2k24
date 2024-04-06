@@ -1,11 +1,15 @@
- import React , { useState } from "react";
+ import React , { useEffect, useState } from "react";
  import { AiOutlineUser } from "react-icons/ai";
  import { AiOutlineMenu} from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
 
- const Nav =()=>{
+ const Nav =({order})=>{
     const [orderType,setOrderType] = useState(0);
+    const[orderNum,setOrderNum] = useState(0);
+    useEffect(()=>{
+        setOrderNum(parseInt(orderNum)+parseInt( order));
+    },[order])
     const orderChoice=()=>{
         if (orderType===0){
             setOrderType(1);
@@ -24,7 +28,7 @@ import { BsCart } from "react-icons/bs";
                 <input type="search" className="nav_search" placeholder="Search Meal"/>     
             </div>
             <span>
-                <NavLink to="/home-cart" className="nav_reg" ><BsCart/><p> Order</p>2</NavLink>
+                <NavLink to="/home-cart" className="nav_reg" ><BsCart/><p> Order</p>{orderNum}</NavLink>
                 <NavLink to="/login" className="nav_reg"><AiOutlineUser/><p> Register</p></NavLink>
             </span>
             
