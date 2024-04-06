@@ -8,7 +8,7 @@ import { BsCart } from "react-icons/bs";
     const [orderType,setOrderType] = useState(0);
     const[orderNum,setOrderNum] = useState(0);
     useEffect(()=>{
-        setOrderNum(parseInt(orderNum)+parseInt( order));
+        setOrderNum((orderNum)=>parseInt(orderNum)+parseInt(order));
     },[order])
     const orderChoice=()=>{
         if (orderType===0){
