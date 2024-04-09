@@ -10,7 +10,7 @@ const Footer=()=>{
                 <ul>
                     <li><NavLink>get Support</NavLink></li>
                     <li><NavLink to="/add-restaurant">Add your restaurant</NavLink></li>
-                    <li><NavLink>Register</NavLink></li>
+                    <li><NavLink to="/register">Register</NavLink></li>
                 </ul>
             </span>
             <span className="footer_links">

@@ -3,7 +3,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import {jwtDecode} from "jwt-decode";
 
-const clientId= process.env.REACT_APP_GOOGLE_CLIENT_ID
+const clientId= process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const Google=()=>{
     const [user,setUser]=useState({})
     const handleLogin=(response)=>{ 

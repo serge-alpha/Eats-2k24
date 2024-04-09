@@ -14,6 +14,7 @@ const Foodcard =({prop,item})=>{
         } 
     }
     const openModal=()=>{
+        // sends card data to the parent.. Foodcards
       prop(item)
     }
     return(

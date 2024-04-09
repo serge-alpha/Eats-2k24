@@ -14,13 +14,15 @@ const Foodcards =({order})=>{
         {name:"Water and Chicken",price:"500"},
     ];
     const [modalstate,setModalState] =useState("close")
+    // recieves items from food card on modal open and recieves a "close" string on modal close
     const modal=(value)=>{
         setModalState(value)
     }
-    const [value,setValue]=useState("0");
+    const [value,setValue]=useState([]);
     const getOrder=(stuff)=>{
-        setValue(stuff);
-    } 
+        setValue((value)=>[...value,stuff]);
+       
+    }  
     order(value); 
     return(
         <div className={modalstate==="close"?"cards close":"cards"}>

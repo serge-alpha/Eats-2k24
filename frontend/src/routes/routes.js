@@ -13,7 +13,7 @@ import Cart from "../pages/Cart";
 
 
 const Index=()=>{
-    const [order,setOrder] =useState("0");
+    const [order,setOrder] =useState([]);
     const Order =(data)=>{
         setOrder(data)
     }
@@ -24,7 +24,7 @@ const Index=()=>{
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/home" element={ <Home getOrder={Order}/> }/>
-                <Route path="/home-cart" element={ <Cart/> }/>
+                <Route path="/home-cart" element={ <Cart data={order}/> }/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
                 <Route path="/restaurant" element={<Restaurant/>}></Route>

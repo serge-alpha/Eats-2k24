@@ -17,12 +17,13 @@ const FoodcardR =()=>{
             <div className="card_body">
                 <div className="card_head">
                     <span>Special offer</span>
-                    <span>
-                    </span>
+                    <span></span>
                 </div>
-                <div className="card_ordertype">
-                    <span><BsPersonWalking /></span>
-                    <span>PickUp only</span>
+                <div className="card_order" >
+                    <div className="card_ordertype" >
+                        <span><BsPersonWalking /></span>
+                        <span>PickUp only</span>
+                    </div>
                 </div>
             </div>
             <div className="card_info">
@@ -33,6 +34,7 @@ const FoodcardR =()=>{
                    <span>(4.0)</span>
             </div>
         </div>
+        
     )
 }
 
