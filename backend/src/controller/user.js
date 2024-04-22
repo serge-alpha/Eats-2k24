@@ -25,7 +25,7 @@ const getAllUsers = async(req,res)=>{
     }
 }
 
-const createUser = async(req,res)=>{
+const createUser = async(req,res,next)=>{
     try {
         const {email,name,location,password,retype_password}=req.body;
         if(!name){

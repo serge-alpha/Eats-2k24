@@ -205,14 +205,14 @@ code {
   font-family: "courier";
   border: none;
 }
-.dropdown_pannel,.dropdown_pannel1{
+.dropdown_pannel{
   position: relative;
   font-family: "courier";
   width: 10vw;
   padding: 0;
   display: inline;
 }
-.dropdown_content,.dropdown_content1{
+.dropdown_content{
   background-color: #fff;
   cursor: pointer;
   position: absolute;
@@ -230,7 +230,10 @@ code {
 .dropdown_pannel:hover .dropdown_content{
   display: block;
 }
-.dropdown_pannel1:hover .dropdown_content1{
+.dropdown_pannel:hover .dropdown_content{
+  display: block;
+}
+.dropdown_pannel:hover .dropdown_content{
   display: block;
 }
 .side_bar{
@@ -331,8 +334,71 @@ code {
 }
 .quick_filter{
   display: flex;
-  gap: 1.5rem;
+  gap: 5rem;
   text-align: center;
+}
+.fast_food{
+  height: 4rem;
+  width: 100%;
+  background-image: url("../public/image/icons/fast-food.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.lunch{
+  height: 4rem;
+  width: 4rem;
+  align-self: center;
+  background-image: url("../public/image/icons/lunch.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.pastry{
+  height: 4rem;
+  width: 4rem;
+  background-image: url("../public/image/icons/pastries.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.dropdown_pannel_1,.dropdown_pannel_2,.dropdown_pannel_3{
+  position: relative;
+  font-family: "courier";
+  width: 10vw;
+  padding: 0;
+  display: inline;
+}
+.dropdown_content_1,.dropdown_content_2,.dropdown_content_3{
+  background-color: #fff;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  left: 0.1px;
+  width: 100%;
+  display: none;
+}
+.dropdown_content_1>p,.dropdown_content_2>p,.dropdown_content_3>p{
+  padding: 0.5rem;
+  margin: 0rem;
+}
+.dropdown_content_1>p:hover{
+  background-color: #ebe3e3;
+}
+.dropdown_content_2>p:hover{
+  background-color: #ebe3e3;
+}
+.dropdown_content_3>p:hover{
+  background-color: #ebe3e3;
+}
+.dropdown_pannel_1:hover .dropdown_content_1{
+  display: block;
+}
+.dropdown_pannel_2:hover .dropdown_content_2{
+  display: block;
+}
+.dropdown_pannel_3:hover .dropdown_content_3{
+  display: block;
 }
 .footer{
   display: flex;
@@ -628,7 +694,7 @@ padding:5rem 2rem 2rem 2rem;
     font-size: small;
     grid-area: logo;
     justify-content: flex-start;
-    gap: 0.5rem;
+    gap: 1rem;
   }
   .nav_menu>h1{
     font-size: large;
@@ -650,12 +716,14 @@ padding:5rem 2rem 2rem 2rem;
     display: none;
   }
   .nav_navigation{
-    display: none;
     grid-area: info;
-    /* display: grid; */
+    display: grid;
     justify-content: center;
     grid-template-areas: 'nav1 nav2' 'nav3 nav3';
     margin: 0;
+  }
+  .nav_navigation_gone{
+    display: none;
   }
   .nav>span:last-child{
     grid-area: btns;
@@ -758,6 +826,13 @@ padding:5rem 2rem 2rem 2rem;
    .cart{
     margin:auto;
     width: 95vw;
+   }
+   .quick_filter{
+    justify-content: center;
+   }
+   .lunch,.fast_food,.pastry{
+    height: 3rem;
+    width: 3rem;
    }
   /* ---------------------cardS--------------------- */
   .cards{

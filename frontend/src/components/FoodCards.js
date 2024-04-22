@@ -13,23 +13,30 @@ const Foodcards =({order})=>{
         {name:"Peanut",price:"500"},
         {name:"Water and Chicken",price:"500"},
     ];
-    const [modalstate,setModalState] =useState("close")
+    const [modal,setModal]=useState({})
+    const [view,setView] =useState("close");
     // recieves items from food card on modal open and recieves a "close" string on modal close
-    const modal=(value)=>{
-        setModalState(value)
+    const modalstate=(value)=>{
+        setModal(value);
+    }
+    const viewstate=(value)=>{
+        setView(value);
     }
     const [value,setValue]=useState([]);
     const getOrder=(stuff)=>{
         setValue((value)=>[...value,stuff]);
        
     }  
+    console.log(value)
     order(value); 
     return(
-        <div className={modalstate==="close"?"cards close":"cards"}>
+        <div className={view==="close"?"cards close":"cards"}>
             {items.map((item)=>{
-                return(<Foodcard prop={modal} item={item}/>)
+                // prop={modal} function here is used to send to the modal infomation about the card been clicked
+                // item contains the infomation to be displayed on the card
+                return(<Foodcard modal={modalstate} view={viewstate}  item={item}/>)
             })}
-            <FoodModal prop={modal} item={modalstate} value={getOrder}/>
+            <FoodModal  view={viewstate} item={modal} order={getOrder}/>
         </div>
     )
 }

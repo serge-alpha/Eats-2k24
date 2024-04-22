@@ -3,25 +3,29 @@ import { NavLink } from "react-router-dom";
 import { BsFillXCircleFill,BsCaretLeftFill,BsCaretRightFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const FoodModal=({prop,value,item})=>{ 
+const FoodModal=({order,view,item})=>{ 
     // value represents the item data while triger is used to actvate the useeffect in Nav
-    const [quantity, setQuantity]=useState({value:1,item});
+    const [quantity, setQuantity]=useState(1);
+    const [cartItem,setCartItem]=useState({value:1,item});
 
     // Funtion updates the item data 
     const quantityOnChange=(value)=>{
-        if(quantity.value>1 || value>0){
-            setQuantity({value:quantity.value+value,item});
+        if(quantity>=1){
+            // setQuantity({value:quantity.value+value,item});
+            setQuantity((quantity)=>{return quantity+value})
+            console.log("setQuantity done");
         }   
     } 
     // Function closes modal while sending item data and trigger value to the
     const AddToCart=()=>{
-        value(quantity);
-        prop("close");    
+        setCartItem({value:quantity,item});
+        view("close") 
+        order(cartItem);  
     }
     const closeModal=()=>{
-        prop("close");    
+        view("close");   
     }
-    
+   console.log(item);
   
     return(
         <div className="modal">
@@ -40,11 +44,11 @@ const FoodModal=({prop,value,item})=>{
                     <span className="modal_quantity">
                         <h4>Quantity</h4>
                         <span className="quantity" onClick={()=>quantityOnChange(-1)}><IconContext.Provider value={{size:"1.5em"}}><BsCaretLeftFill /></IconContext.Provider></span>
-                        <p>{quantity.value}</p>
+                        <p>{quantity}</p>
                         <span className="quantity"onClick={()=>quantityOnChange(1)}><IconContext.Provider value={{size:"1.5em"}}><BsCaretRightFill /></IconContext.Provider></span>
                     </span>
                     <span className="modal_btn " onClick={AddToCart}>
-                        <NavLink className="button">Order for {quantity.value} .<b>{quantity.value*item.price}</b></NavLink>
+                        <NavLink className="button">Order for {quantity} .<b>{quantity*item.price}</b></NavLink>
                     </span>
                 </div>
             </div>

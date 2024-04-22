@@ -14,11 +14,19 @@ import { BsCart } from "react-icons/bs";
             setOrderType(0);
         }
     }
-    console.log(order)
+    const [menustate,setMenuState] = useState(1);
+    const menuState=()=>{
+        if (menustate===0){
+            setMenuState(1);
+        }else{
+            setMenuState(0);
+        }
+    }
+    console.log(menustate)
     return(
         <div className="nav">
-            <span className="nav_menu"><b className="nav_menubar"><AiOutlineMenu/></b><NavLink to="/"><h1>Eats</h1></NavLink></span>
-            <div className="nav_navigation">
+            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}><AiOutlineMenu/></b><NavLink to="/"><h1>Eats</h1></NavLink></span>
+            <div className={menustate===1?"nav_navigation":"nav_navigation_gone"}>
                 <div className="nav_delivery">
                     {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery" >Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}
                 </div>                

@@ -4,7 +4,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Foodcard =({prop,item})=>{
+const Foodcard =({modal,item,view})=>{
     const [fav,setFAv]=useState("AiOutlineHeart")
     const favourite=()=>{
         if (fav==="AiOutlineHeart"){
@@ -15,7 +15,8 @@ const Foodcard =({prop,item})=>{
     }
     const openModal=()=>{
         // sends card data to the parent.. Foodcards
-      prop(item)
+      modal(item)
+      view("open")
     }
     return(
         <div className="card"> 

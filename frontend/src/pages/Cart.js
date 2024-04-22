@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconContext } from "react-icons";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
 const Cart =({data})=>{
 console.log(data);
+let total;
+total=total+(data.map((item,key)=>{
+    return(parseInt(item.value)*parseInt(item.item.price))
+}))
+const [sum,setSum]=useState(total);
+// data.map((item,key)=>{
+//     return(setSum((sum)=>sum+(item.value*item.item.price)))
+//     });
     return(
         <div className="cart">
             <div className="cart_close">
@@ -19,7 +27,7 @@ console.log(data);
                 })}
                 
             <div className="modal_btn ">
-                <NavLink to="/home" className="button" >Checkout<b>1500XFA</b></NavLink>
+                <NavLink to="/home" className="button" >Checkout <b>{sum}XFA</b></NavLink>
             </div>
         </div>
     )
