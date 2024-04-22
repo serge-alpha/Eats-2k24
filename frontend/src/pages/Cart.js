@@ -9,7 +9,8 @@ let total;
 total=total+(data.map((item,key)=>{
     return(parseInt(item.value)*parseInt(item.item.price))
 }))
-const [sum,setSum]=useState(total);
+const [sum,setSum]=useState(0);
+setSum(total)
 // data.map((item,key)=>{
 //     return(setSum((sum)=>sum+(item.value*item.item.price)))
 //     });
