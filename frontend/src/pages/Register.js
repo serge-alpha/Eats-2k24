@@ -16,8 +16,8 @@ const Register = ()=>{
                     <input type="text" placeholder="Last Name" className="login_input" name="first_name"/>
                     <input type="areacode" placeholder="areacode" className="login_input" name="first_name"/>
                     <input type="phonenumber" placeholder="phonenumber" className="login_input" name="first_name"/>
-                    <button type="submit" className="button"><NavLink to="#" className="button" onClick={CfrmEmail}><b>Next<AiOutlineArrowRight/></b></NavLink></button>
                     <Google/>
+                    <button type="submit" className="button"><NavLink to="#" className="button" onClick={CfrmEmail}><b>Next<AiOutlineArrowRight/></b></NavLink></button>
                     <hr/>
                     <p>or <NavLink to="/login">login</NavLink></p> 
                 </form>:

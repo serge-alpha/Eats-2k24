@@ -374,13 +374,16 @@ code {
   cursor: pointer;
   position: absolute;
   z-index: 1;
+  font-size: x-small;
   left: 0.1px;
   width: 100%;
   display: none;
 }
 .dropdown_content_1>p,.dropdown_content_2>p,.dropdown_content_3>p{
   padding: 0.5rem;
-  margin: 0rem;
+  margin: 0;
+  text-align: center;
+  
 }
 .dropdown_content_1>p:hover{
   background-color: #ebe3e3;

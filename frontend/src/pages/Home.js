@@ -1,6 +1,7 @@
 import React from "react";
 import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
+import { FaStar } from "react-icons/fa";
 
 
 const Home =({getOrder})=>{
@@ -27,11 +28,11 @@ const Home =({getOrder})=>{
                     <div className="dropdown_pannel_1">
                         <button className="dropbtn">Rating </button>
                             <div className="dropdown_content_1">
-                                <p> 1 star</p>
-                                <p> 2 star</p>
-                                <p> 3 star</p>
-                                <p> 4 star</p>
-                                <p> 5 star</p>
+                                <p><s><FaStar/></s></p>
+                                <p><FaStar/><FaStar/></p>
+                                <p><FaStar/><FaStar/><FaStar/></p>
+                                <p><FaStar/><FaStar/><FaStar/><FaStar/></p>
+                                <p><FaStar/><FaStar/><FaStar/><FaStar/><FaStar/></p>
                             </div>
                     </div>
                     <div className="dropdown_pannel_2">

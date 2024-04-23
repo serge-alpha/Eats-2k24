@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
@@ -10,7 +10,10 @@ total=total+(data.map((item,key)=>{
     return(parseInt(item.value)*parseInt(item.item.price))
 }))
 const [sum,setSum]=useState(0);
-setSum(total)
+
+useEffect(()=>{
+    setSum(total)
+},[total]);
 // data.map((item,key)=>{
 //     return(setSum((sum)=>sum+(item.value*item.item.price)))
 //     });
