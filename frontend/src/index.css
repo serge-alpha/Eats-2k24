@@ -368,6 +368,15 @@ code {
         background-repeat: no-repeat;
         cursor: pointer;
       }
+.filter>h5{
+  margin: 0.5rem;
+}
+.filter{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
 .dropdown_pannel_1,.dropdown_pannel_2,.dropdown_pannel_3{
   position: relative;
   font-family: "courier";
@@ -699,9 +708,11 @@ padding:5rem 2rem 2rem 2rem;
 }
 /* --------------------------------------------------------RESPONSIVENESS--------------------------------------- */
 @media only screen and  (max-width: 700px) {
+  *{
+    font-size: 100%;
+  }
   /* --------nav--------------------- */
   .nav_menu{
-    font-size: small;
     grid-area: logo;
     justify-content: flex-start;
     gap: 1rem;
@@ -734,6 +745,8 @@ padding:5rem 2rem 2rem 2rem;
     display: flex;
     grid-area: info;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap:1rem;
   }
   .nav_navigation_s>div{
@@ -745,27 +758,27 @@ padding:5rem 2rem 2rem 2rem;
     border-radius: 2rem 0rem 0rem 2rem;
     padding: 0rem 0.3rem;
     width: 50vw;
+    text-align: center;
+    font-size: 0.8rem;
     background-color:  rgb(217, 219, 221);
   }
   .hide_nav_navigation_s{
     display: none;
   }
-  .nav_navigation_s>div>{
-    display: flex;
+  .nav_navigation_s>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
   }
   .nav_navigation_s>div>button{
     border: none;
     border-radius: 0rem 2rem 2rem 0rem;
-    padding: 0rem 0.3rem;
-    width: 50vw;
+    padding: 0.8rem;
     background-color:  rgb(217, 219, 221);
-    /* background-color: transparent; */
     font-weight: bold;
     font-family:"Copperplate";
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
-    /* , Tahoma, Geneva, Verdana, sans-serif */
   }
   .nav{
     display: grid;
@@ -837,6 +850,9 @@ padding:5rem 2rem 2rem 2rem;
   .login_form{
     width: 80%;
   }
+  .login_container{
+    height: 100%;
+  }
   .login_input{
     font-size: medium;
   }
@@ -862,7 +878,7 @@ padding:5rem 2rem 2rem 2rem;
    }
    .quick_filter{
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
    }
    .lunch,.fast_food,.pastry{
     height: 3rem;
