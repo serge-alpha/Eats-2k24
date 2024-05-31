@@ -8,7 +8,12 @@ const AddMeal=()=>{
     return(
         <div className="meal_form">
            
+            {/* <span className="meal_img">
+                <BsXCircle/>
+                <h5>Add meal Image</h5>
+            </span> */}
             <span className="meal_img">
+                <input type="file"></input>
                 <BsXCircle/>
                 <h5>Add meal Image</h5>
             </span>
@@ -17,15 +22,16 @@ const AddMeal=()=>{
                     <input type="text" placeholder="Meal's Name" className="login_input" name="mealname"/>
                     <input type="number"  placeholder="Price(CFA)" className="login_input" name="mealprice" min="500"/>
                     <input type="number"  placeholder="Delivery Fee(CFA)" className="login_input" name="mealdelivery_fee" min="500"/>
-                    <span className="meal_discount">
+                    {/*-------------------- this section will be added to the next release--------------------
+                     <span className="meal_discount">
                         <p>Discount offers</p>
                         <p>1 added</p>
                         <IconContext.Provider value={{size:"1.2em", color:"black"}}><CiCirclePlus/></IconContext.Provider>
                     </span> 
                     <span className="discount">
                         <p>Add discount</p> 
-                    </span>
-                    <input type="textarea" className="login_input" placeholder="Meal Description" name="mealdescription"/>
+                    </span> */}
+                    <input type="text-area" className="login_input" placeholder="Meal Description" name="mealdescription"/>
                     <NavLink to="/restaurant" className="button"><b>Create</b></NavLink>
                     <hr/>
             </form>
