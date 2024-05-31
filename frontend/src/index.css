@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   /* font-family:  "courier"; */
-  /* font-family: "sans-serif"; */
-  font-family: "montserrat";
+  font-family: "sans-serif";
+  /* font-family: "montserrat"; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 800;

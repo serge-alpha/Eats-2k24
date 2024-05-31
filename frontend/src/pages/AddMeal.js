@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { CiCirclePlus } from "react-icons/ci";
-import { IconContext } from "react-icons";
+// import { CiCirclePlus } from "react-icons/ci";
+// import { IconContext } from "react-icons";
 import { BsXCircle } from "react-icons/bs";
 
 const AddMeal=()=>{

@@ -1,7 +1,7 @@
 import React from "react";
 import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
-import { FaStar } from "react-icons/fa";
+// import { FaStar } from "react-icons/fa";
 
 
 const Home =({getOrder})=>{

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import Google from "../components/Google";
-import { createUser } from "../services/users";
+// import { createUser } from "../services/users";
 
 const Register = ()=>{
     const [cfrmEmail,setCfrmEmail] =useState(1);
     const CfrmEmail=()=>{
         return setCfrmEmail(0);
     }
-
+console.log(cfrmEmail);
 const [email,setEmail]=useState('');
 const [name,setName]=useState('');
 const [location,setLocation]=useState('');
