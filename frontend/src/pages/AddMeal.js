@@ -13,7 +13,7 @@ const AddMeal=()=>{
                 <h5>Add meal Image</h5>
             </span> */}
             <span className="meal_img">
-                <input type="file"></input>
+                <input type="file" ></input>
                 <BsXCircle/>
                 <h5>Add meal Image</h5>
             </span>
@@ -31,7 +31,7 @@ const AddMeal=()=>{
                     <span className="discount">
                         <p>Add discount</p> 
                     </span> */}
-                    <input type="text-area" className="login_input" placeholder="Meal Description" name="mealdescription"/>
+                    <textarea type="text" className="login_input text_area" placeholder="Meal Description" name="mealdescription" />
                     <NavLink to="/restaurant" className="button"><b>Create</b></NavLink>
                     <hr/>
             </form>
