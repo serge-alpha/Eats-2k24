@@ -25,9 +25,7 @@ const Foodcards =({order})=>{
     const [value,setValue]=useState([]);
     const getOrder=(stuff)=>{
         setValue((value)=>[...value,stuff]);
-       
     }  
-    console.log(value)
     order(value); 
     return(
         <div className={view==="close"?"cards close":"cards"}>

@@ -17,15 +17,18 @@ const FoodModal=({order,view,item})=>{
         }   
     } 
     // Function closes modal while sending item data and trigger value to the
+    //Order is  a function from nav that takes meal's data
     const AddToCart=()=>{
         setCartItem({value:quantity,item});
-        view("close") 
-        order(cartItem);  
+        order(cartItem); 
+        view("close"); 
+        //--------------------------------------------------------
+         console.log(cartItem);
     }
     const closeModal=()=>{
         view("close");   
     }
-   console.log(item);
+//    console.log(item);
   
     return(
         <div className="modal">

@@ -9,6 +9,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 800;
 }
+a{
+  color:#000;
+  text-decoration: none;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -76,10 +80,6 @@ code {
 }
 .nav_navigation_s,.hide_nav_navigation_s{
   display: none;
-  position: absolute;
-  top:0rem;
-  padding: 0.5rem;
-  background-color:#fff;
 }
 
 .nav_location{
@@ -90,6 +90,7 @@ code {
   display: flex;
   border-radius: 2rem;
   border: none;
+  cursor: pointer;
   font-family: 'Courier New', Courier, monospace;
   font-weight: 900;
   padding: 1.5vh;
@@ -260,7 +261,6 @@ code {
   text-decoration: none;
   color:#000;
   background-color: #fff;
-  font-family: "courier";
   cursor: pointer;
   transition: background-color 400ms ease;
 }
@@ -305,7 +305,7 @@ code {
   width: 100%;
   height: 1rem;
   padding: 1rem;
-  font-family: "courier new";
+  font-family: "montserrat";
   font-size: medium;
   border: none;
   border-bottom:1px solid black;
@@ -474,7 +474,6 @@ code {
   justify-content: flex-start;
   gap: 1rem;
 }
-
 .card_head{
   display: flex;
   justify-content: space-between;
@@ -505,7 +504,6 @@ code {
   background-color: rgba(0, 0, 0, 0.2);
   width: fit-content;
 }
-
 .card_info{
   display: flex;
   justify-content: space-between;
@@ -513,7 +511,7 @@ code {
 }
 .cards{
   display: grid;
-  column-gap: 2%;
+  gap:3rem;
   grid-template-columns: auto auto auto auto;
   width: 100%;
   height: 100%;
@@ -526,8 +524,7 @@ code {
   width: 70vw;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
   top:5rem;
-  left:12%;
-  right: 12%;
+  left:9%;
   position: absolute;
   position: fixed;
   z-index: 3;
@@ -728,10 +725,17 @@ padding:5rem 2rem 2rem 2rem;
   *{
     font-size: 100%;
   }
+  html{
+    width: 100vw;
+  }
   /* --------nav--------------------- */
   .nav{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas: 'logo btns'
+    'info info';
+    height: 100%;
+    padding:1rem 1rem 0 1rem ;
+    /* justify-content: space-between; */
   }
   .nav_menu{
     grid-area: logo;
@@ -763,8 +767,13 @@ padding:5rem 2rem 2rem 2rem;
     margin-left: 25vw;
   }
   .nav_navigation_s{
+    position: absolute;
+    top:0rem;
+    right: 0rem;
+    left: -1rem;
+    background-color:#fff;
     display: flex;
-    width: 100%;
+    width: 105%;
     grid-area: info;
     flex-direction: column;
     align-items: center;
@@ -798,13 +807,6 @@ padding:5rem 2rem 2rem 2rem;
     text-align: center;
     font-size: 0.8rem;
     background-color:  rgb(217, 219, 221);
-  }
-  .nav{
-    display: grid;
-    grid-template-areas: 'logo btns'
-    'info info';
-    height: 100%;
-    padding:0 1rem 0 1rem ;
   }
   .nav_delivery{
     padding: 0.1rem;
@@ -923,9 +925,13 @@ padding:5rem 2rem 2rem 2rem;
   .category_filter{
     display: none;
   }
+  .home{
+    left: 0rem;
+    right: 0rem;
+  }
   .modal{
     gap: 1rem;
-    top: 16%;
+    top: 11%;
     left: 2.5%;
   }
   .modal_img{

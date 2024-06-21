@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Nav from "../components/Nav";
@@ -21,14 +21,14 @@ const Index=()=>{
         <BrowserRouter>
             <Nav order={order}/>
             <Routes>
-                <Route path="/" element={<StartPage/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/home" element={ <Home getOrder={Order}/> }/>
-                <Route path="/home-cart" element={ <Cart data={order}/> }/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
-                <Route path="/restaurant" element={<Restaurant/>}></Route>
-                <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>
+                    <Route path="/" element={<StartPage/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/home" element={ <Home getOrder={Order}/> }/>
+                    <Route path="/home-cart" element={ <Cart data={order}/> }/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
+                    <Route path="/restaurant" element={<Restaurant/>}></Route>
+                    <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>
             </Routes>
         </BrowserRouter>
     )

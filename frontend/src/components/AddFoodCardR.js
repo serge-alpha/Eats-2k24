@@ -6,11 +6,13 @@ import { NavLink } from "react-router-dom";
 const AddFoodCardR =()=>{
     return(
         <div className="card"> 
-            <div className="add_card">
+            <NavLink to="/restaurant/add-meal">
+                <div className="add_card">
                     <span>
-                        <NavLink to="/restaurant/add-meal"><BsXCircle /></NavLink>
+                        <BsXCircle />
                     </span>                    
-            </div>
+                </div>
+            </NavLink>
             <p>Add Meal</p>
         </div>
     )

@@ -2,6 +2,7 @@
  import { AiOutlineUser } from "react-icons/ai";
  import { AiOutlineMenu} from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { MdRestaurantMenu } from "react-icons/md";
 import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
 
  const Nav =({order})=>{
@@ -94,18 +95,19 @@ import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
     }   
     return(
         <div className="nav">
-            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}><AiOutlineMenu/></b><NavLink to="/home"><h1>Eats</h1></NavLink></span>
+            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home"><h1>Eats</h1></NavLink></span>
             <div className="nav_navigation">
                 <div className="nav_delivery">
                     {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery" >Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}
                 </div>                
-                <input type="location"className="nav_location" placeholder="Location. Now"/>
+                {/* <input type="location"className="nav_location" placeholder={location +"    "+dateValue+" "+time }/> */}
+                <p className="nav_location">{location}   {dateValue+" "+time }</p>
                 <input type="search" className="nav_search" placeholder="Search Meal"/>     
             </div>
             {/* ===============================Nav menu on small screens======================================== */}
             <div className={menustate===0?"hide_nav_navigation_s":"nav_navigation_s"}>
                 <div onClick={editState}>
-                    <p>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/>{time}</p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</p>
+                    <p>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</p>
                     <p><p>{location}</p></p>
                 </div>
                 <input type="search" className="nav_search" placeholder="Search Meal"/>
