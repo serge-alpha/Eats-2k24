@@ -23,7 +23,7 @@ const FoodModal=({order,view,item})=>{
         order(cartItem); 
         view("close"); 
         //--------------------------------------------------------
-         console.log(cartItem);
+        console.log(cartItem);
     }
     const closeModal=()=>{
         view("close");   
