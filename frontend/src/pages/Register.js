@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import Google from "../components/Google";
-import { createUser } from "../services/users";
+// import { createUser } from "../services/users";
 
 const Register = ()=>{
     const [cfrmEmail,setCfrmEmail] =useState(1);
@@ -42,7 +42,7 @@ const handleSubmit=async(event)=>{
         newUser.append('retype_password',retype_password);
         // console.log(newUser);
         // console.log("Success");
-    const data = await createUser(newUser);
+    // const data = await createUser(newUser);
       console.log(newUser);
       console.log(name);
     } catch (error) {
