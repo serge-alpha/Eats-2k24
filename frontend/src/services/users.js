@@ -3,7 +3,7 @@ import axios from "axios"
 export const createUser=async(data)=>{
     try {
         const response=await axios.post('http://localhost:3001/api/user/',data,{
-            withCredentials:true
+            withCredentials:true,headers:{cors:true}
         });
         return( response)
     } catch (error) {

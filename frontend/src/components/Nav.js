@@ -94,8 +94,8 @@ import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
         }
     }   
     return(
-        <div className="nav">
-            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home"><h1>Eats</h1></NavLink></span>
+        <div className="nav" >
+            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home"><h1><a href="#home">Eats</a></h1></NavLink></span>
             <div className="nav_navigation">
                 <div className="nav_delivery">
                     {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery" >Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}

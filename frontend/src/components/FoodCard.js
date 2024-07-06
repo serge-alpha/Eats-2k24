@@ -40,8 +40,9 @@ const Foodcard =({modal,item,view})=>{
                     <span>
                         <h3><b>{item.name}</b></h3>
                         <p> 30-40mins</p>
+                        <p>By {item.chef}</p>
                     </span>
-                    <span>4.0</span>             
+                    <p>4.0</p>             
             </div>
         </div>
     )

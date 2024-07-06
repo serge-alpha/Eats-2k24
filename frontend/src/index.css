@@ -7,7 +7,7 @@ body {
   font-family: "montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 800;
+  font-weight: bold;
 }
 a{
   color:#000;
@@ -157,10 +157,10 @@ code {
 .start_container>span{
   color: white;
   font-size: large;
-  width: 63%;
+  width: 50%;
 }
 .start_container>span>a{
-  color: #fff;
+  color: #ffffff;
 }
 .start_search{
   display: flex;
@@ -427,7 +427,7 @@ code {
   justify-content: space-around;
   align-items:center;
   gap: 12rem;
-  height: 60vh;
+  height: 82vh;
   width: 100%;
   background-color: #f7990c;
   color: #fafafa;
@@ -440,6 +440,10 @@ code {
       .footer_links>ul>li{
         padding: 0.5rem;
       }
+      .footer_links>ul{
+        text-align: left;
+        padding: 0;
+      }
       .footer_links>ul>li:hover{
         text-decoration: underline;
       }
@@ -451,10 +455,15 @@ code {
       }
       .footer_socials{
         background-color: #f7990c;
-        font-size: large;
+        font-size: small;
         display: flex;
         justify-content: center;
-        /* padding: 1rem; */
+        padding: 1rem; 
+        text-align: center;
+      }
+      .footer_socials>p>a{
+        color: #1a1a1aef;
+        text-decoration: underline;
       }
 /* -----------------------------------cardS CSS---------------------------------------------------------------- */
 .card{
@@ -508,6 +517,10 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.card_info>span>p,.card_info>p{
+  font-size: small;
+  font-weight: 500;
 }
 .cards{
   display: grid;
@@ -633,8 +646,8 @@ padding:5rem 2rem 2rem 2rem;
   align-items: center;
 }
 .restuarant_dist{
-  display: flex;
   flex-direction: column;
+  display: flex;
   width: 100%;
 }
 .add_card{
@@ -734,7 +747,7 @@ padding:5rem 2rem 2rem 2rem;
     grid-template-areas: 'logo btns'
     'info info';
     height: 100%;
-    padding:1rem 1rem 0 1rem ;
+    padding:0rem 1rem 0 1rem ;
     /* justify-content: space-between; */
   }
   .nav_menu{
@@ -973,6 +986,9 @@ padding:5rem 2rem 2rem 2rem;
   .footer{
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .food_links>ul{
+    gap: 1rem;
   }
 }
 @media only screen and (min-width:600px) and (max-width:1200px){

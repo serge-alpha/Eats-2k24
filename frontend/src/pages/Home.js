@@ -7,8 +7,8 @@ import Footer from "../components/Footer";
 const Home =({getOrder})=>{
    
     return(
-        <div className="body">
-            <div className="home">
+        <div className="body" id="top">
+            <div className="home" >
                 <div className="quick_filter">
                     <span className="filter">
                         <div className="fast_food"></div>
@@ -60,7 +60,7 @@ const Home =({getOrder})=>{
                     </div>*/} 
                 </div>
                 <div className="card_rows">
-                    <h2><b>Deliveries for less than 1000 CFA</b></h2>
+                    {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}
                     <FoodCards order={getOrder}/>
                 </div>
                 

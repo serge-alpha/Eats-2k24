@@ -56,7 +56,7 @@ const userSchema=new Schema({
     // will be updated when user send thier id photo and its verified
     is_verified:{
         type:Boolean,
-        default:false
+        default:true
     },
     is_Banned:{
         type:Boolean,

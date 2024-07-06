@@ -4,14 +4,14 @@ import FoodModal from "./FoodModal";
 
 const Foodcards =({order})=>{
     const items = [
-        {name:"Garri and Eru",price:"2000"},
-        {name:"Rice and Bean",price:"1000"},
-        {name:"Achu",price:"1500"},
-        {name:"CornChaff",price:"700"},
-        {name:"Pancakes",price:"600"},
-        {name:"Cakes",price:"1700"},
-        {name:"Peanut",price:"500"},
-        {name:"Water and Chicken",price:"500"},
+        {name:"Garri and Eru",price:"2000",chef:"John Smith"},
+        {name:"Rice and Bean",price:"1000",chef:"John Smith"},
+        {name:"Achu",price:"1500",chef:"John Smith"},
+        {name:"CornChaff",price:"700",chef:"John Smith"},
+        {name:"Pancakes",price:"600",chef:"John Smith"},
+        {name:"Cakes",price:"1700",chef:"John Smith"},
+        {name:"Peanut",price:"500",chef:"John Smith"},
+        {name:"Water and Chicken",price:"500",chef:"John Smith"},
     ];
     const [modal,setModal]=useState({})
     const [view,setView] =useState("close");

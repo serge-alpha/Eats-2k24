@@ -27,6 +27,7 @@ const getAllUsers = async(req,res)=>{
 
 const createUser = async(req,res,next)=>{
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const {email,name,location,password,retype_password}=req.body;
         if(!name){
             throw createError(404,'Please input User name');

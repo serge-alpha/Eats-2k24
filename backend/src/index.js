@@ -1,6 +1,6 @@
 const express=require('express');
 const morgan = require('morgan');
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 
@@ -16,7 +16,7 @@ app.use(morgan("dev"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'https://localhost:3001',
+    origin:['https://localhost:3000','http://127.0.0.1:3000'],
     credentials:true
 }));
 
