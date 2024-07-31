@@ -1,13 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
+import { getAllMeals } from "../services/meal";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import { getAllUser } from "../services/users";
 // import { FaStar } from "react-icons/fa";
 
 
-const Home =({getOrder})=>{
-   
+const Home =({getOrder,user})=>{
+    const [meals,setMeals]=useState([]);
+    const [chefs,setChefs]=useState([]);
+    const [userdata,setUserData]=useState();
+    //const[mealStatus,setMealStatus]=useState(false);
+
+    useEffect(()=>{
+        const fetch=async()=>{
+            try {
+                const Meals= await getAllMeals();
+                const User= await getAllUser();
+                setMeals(Meals.meals);
+                setChefs(User.users);
+                
+            } catch (error) {
+                toast(error.msg, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "colored",
+                    transition: Slide
+                    });
+            }
+            setUserData(user);
+            console.log(userdata);
+        };
+        fetch();
+       
+    },[user,userdata]);
     return(
         <div className="body" id="top">
+            <ToastContainer position="top-right"
+                        autoClose={5000}
+                        hideProgressBar
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                        />
             <div className="home" >
                 <div className="quick_filter">
                     <span className="filter">
@@ -61,11 +105,11 @@ const Home =({getOrder})=>{
                 </div>
                 <div className="card_rows">
                     {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}
-                    <FoodCards order={getOrder}/>
+                    <FoodCards meals={meals} chefs={chefs} order={getOrder}/>
                 </div>
                 
             </div>
-            <Footer/>
+            <Footer user={userdata}/>
         </div>
         
     )

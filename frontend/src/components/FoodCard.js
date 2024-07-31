@@ -4,7 +4,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Foodcard =({modal,item,view})=>{
+const Foodcard =({modal,item,view,chef})=>{
     const [fav,setFAv]=useState("AiOutlineHeart")
     const favourite=()=>{
         if (fav==="AiOutlineHeart"){
@@ -40,9 +40,9 @@ const Foodcard =({modal,item,view})=>{
                     <span>
                         <h3><b>{item.name}</b></h3>
                         <p> 30-40mins</p>
-                        <p>By {item.chef}</p>
+                        {chef?<p>By {chef.restaurant_name===""?chef.name:chef.restaurant_name}</p>:<></>}
                     </span>
-                    <p>4.0</p>             
+                    <p>{item.rating}</p>             
             </div>
         </div>
     )

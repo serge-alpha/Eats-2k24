@@ -2,11 +2,54 @@ import axios from "axios"
 
 export const createMeal=async(data)=>{
     try {
-        const response=await axios.post('http://localhost:3001/api/user',data,{
+        const response=await axios.post('http://localhost:3001/api/meal',data,{
             withCredentials:true
         } );
         return( response.data)
     } catch (error) {
-       return(error.response.data.error.message)
+       return  error.response.data;
+    }
+}
+
+export const getAllMeals=async()=>{
+    try {
+        const response=await axios.get(`http://localhost:3001/api/meal`);
+        return(response.data)
+    } catch (error) {
+        throw error.response.data;
+    }
+}
+
+export const UpdateMeal=async(data,id)=>{
+    try {
+        const response=await axios.put(`http://localhost:3001/api/user/meal/${id}`,data,{
+            withCredentials:true
+        });
+        return( response.data)
+    } catch (error) {
+        throw error.response.data;
+    }
+}
+
+export const getOneMeal=async(id)=>{
+    //id is the id of the user
+    try {
+        const response=await axios.get(`https://localhost:3001/api/meal/${id}`);
+        return( response.data)
+    } catch (error) {
+        return error;
+    }
+}
+
+export const deleteMeal=async(id)=>{
+     //id is the id of the user
+    try {
+         const response=await axios.delete(`https://localhost:3001/api/meal/${id}`,{
+            withCredentials:true
+         }); 
+         return response
+       
+    } catch (error) {
+        throw error.response.data;
     }
 }

@@ -24,6 +24,7 @@ const transporter = nodemailer.createTransport({
       html: emailData.html,
     }
     const info = await transporter.sendMail(mailOptions)
+    console.log(info);
   } catch (error) {
     console.log('---SMTP ERROR2---')
     console.log('problem sending Email:', error)

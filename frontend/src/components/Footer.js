@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Footer=()=>{
+const Footer=({user})=>{
+
+    
     return(
         <div className="home_footer">
         <div className="footer">
@@ -9,8 +11,9 @@ const Footer=()=>{
             <span className="footer_links">
                 <ul>
                     <li><a href={'mailto:"sergealpha12@gmail.com"'}>get Support</a></li>
-                    <li><NavLink to="/add-restaurant">My restaurant</NavLink></li>
-                    <li><NavLink to="/register">Register</NavLink></li>
+                    {}
+                    {user?<li><NavLink to={user.is_Chef?"/restaurant":"/add-restaurant"}>My restaurant</NavLink></li>:<></>}
+                    {/* <li><NavLink to="/register">Register</NavLink></li> */}
                     <li><NavLink> Foods near me</NavLink></li>
                     <li><NavLink>Show all cities</NavLink></li>
                 </ul>

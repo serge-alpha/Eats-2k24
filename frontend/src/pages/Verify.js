@@ -1,8 +1,8 @@
 
-import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import {  verifyUser } from "sevices/user";
+import { verifyUser } from "../services/users";
+
 
 
 const Verify=()=>{
@@ -13,9 +13,7 @@ const Verify=()=>{
 const handleSubmit=async(event)=>{
     event.preventDefault();
     try {
-        console.log(token)
       const result=await verifyUser(token);
-
       toast(result.message)
       navigate('/login')
 
@@ -25,9 +23,13 @@ const handleSubmit=async(event)=>{
 }
 
     return(
-        <div>
-            <h3>Click the botton below to activate your account</h3>
-            <button type="submit" className="login_btn" onClick={handleSubmit} >Activate</button>
+        <div className="login_container">
+            <div className="login_form">
+                <h3>Click the botton below to activate your account</h3>
+                <hr></hr>
+                <button type="submit" className="button login_btn" onClick={handleSubmit} ><b>Activate</b></button> 
+            </div>
+            
         </div>
          
     )

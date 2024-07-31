@@ -8,6 +8,7 @@ const userSchema=new Schema({
         type: String,
         required:[true,'name is required'],
         minlenght:2,
+        default:"",
         lowercase:true,
         trim:true
     },
@@ -46,9 +47,6 @@ const userSchema=new Schema({
         type:String,
         required:[true,"location is required"],
     },
-    meals:{
-        type: Array,
-    },
     is_admin:{
         type:Boolean,
         default:false
@@ -63,6 +61,10 @@ const userSchema=new Schema({
         default:false
     },
     is_Login:{
+        type:Boolean,
+        default:false
+    },
+    is_Chef:{
         type:Boolean,
         default:false
     },

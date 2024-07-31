@@ -11,7 +11,7 @@ const { default: mongoose } = require('mongoose');
 const { getId } = require('../helper/cookie');
 
 
-const getAllUsers = async(req,res)=>{
+const getAllUsers = async(req,res,next)=>{
     try {
         const users = await User.find({});
         return res.status(200).json({
@@ -19,15 +19,13 @@ const getAllUsers = async(req,res)=>{
             users
         })
     } catch (error) {
-        return res.status(500).json({
-            msg:error.message,
-        });
+        next(error);
     }
 }
 
 const createUser = async(req,res,next)=>{
     try {
-        res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Origin", "*");
         const {email,name,location,password,retype_password}=req.body;
         if(!name){
             throw createError(404,'Please input User name');
@@ -45,8 +43,9 @@ const createUser = async(req,res,next)=>{
             throw createError(400,'Password must be greater than 6 characters');
         }
         if(retype_password != password){
-            throw createError(400,'password do not match');
+            throw createError(400,'Password do not match');
         }
+        //check if user already exists
         const user = await User.findOne({email});
         if(user){
             throw createError(400,"User already exists");
@@ -71,7 +70,6 @@ const createUser = async(req,res,next)=>{
             msg: "Your verification email has been sent. Please click the link in your email to verify your account",
         })
     } catch (error) {
-        error.message = "error getting user information" + error.message
         next(error);
     }
 }
@@ -166,7 +164,10 @@ const updateUser = async(req,res,next)=>{
         } 
 
         const filter = {id};
-        const update = {...req.body , user_image:req.file.originalname}
+        let update = {...req.body}
+        if(req.file){
+            update={...update,user_image:req.file.originalname}
+        }
         const userUpdate = await User.findOneAndUpdate(filter,update,{new:true});
         if(!userUpdate){
            throw createError(422,"user not Updated")
@@ -189,13 +190,13 @@ const loginUser = async(req, res, next) => {
             throw createError(404,"Please enter your all required fields.")
         }
 
-        const user = await User.findOne({email});
+        let user = await User.findOne({email});
         if (!user) {
             throw createError(404,"User not found.")
         }
         const verify = await comparePassword(password,user.password);
         if (!verify) {
-            throw createError(401, "Not Authorized. Password or email mismatch.")
+            throw createError(404, "Not Authorized. Password or email mismatch.")
         }   
         if(user.is_Banned){
             throw createError(200,"You have been banned, Please contact the administrator")
@@ -212,12 +213,15 @@ const loginUser = async(req, res, next) => {
             // secure:true,
             sameSite:true
         });
+        user= await User.findOne({email},{name:1,email:1,id:1,is_Chef:1,location:1,is_Banned:1,is_Login:1,is_verified:1})
         return res.status(200).json({
-            msg: "User logged in successfully",
+            message:"Login successful",
+            user:{
+                data:user,
+            }
         })
       
     } catch (error) {
-        error.message = "error login user : " + error.message
         next(error)
     }
 } 
@@ -225,8 +229,8 @@ const loginUser = async(req, res, next) => {
 const logoutUser=async(req,res)=>{
     try {
         if(req.headers.cookie){
-            const id=req.headers.cookie.split('=')[0];
-            await User.findOneAndUpdate({id})
+            const id=req.headers.cookie;
+            // await User.findOneAndUpdate({id})
             res.clearCookie(id)
             res.status(200).json({message:"Logout succesful"}) 
         }else{

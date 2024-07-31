@@ -1,15 +1,12 @@
 import axios from "axios"
 
+
 export const createUser=async(data)=>{
     try {
-        const response=await axios.post('http://localhost:3001/api/user/',data,{
-            withCredentials:true,headers:{cors:true}
-        });
-        return( response)
+        const response=await axios.post('http://localhost:3001/api/user/',data);
+        return(response)
     } catch (error) {
-        throw new Error(
-            `Error signin up:${error}`
-        )
+        throw error.response.data;
     }
 }
 
@@ -21,10 +18,7 @@ export const verifyUser=async(token)=>{
         });
         return( response)
     } catch (error) {
-        console.log(error)
-        throw new Error(
-            `Error in verify:${error.message}`
-        )
+        throw error.response.data;
     }
 }
 
@@ -33,24 +27,31 @@ export const LoginUser=async(data)=>{
         const response=await axios.post('http://localhost:3001/api/user/login',data,{
             withCredentials:true
         });
-        return( response.data)
+        return(response.data)
     } catch (error) {
-        throw new Error(
-            `Error Loginin: ${error}`
-        )
+        throw error.response.data;
+    }
+}
+export const LogOutUser=async()=>{
+    try {
+        const response=await axios.post('http://localhost:3001/api/user/logout',{
+            withCredentials:true
+        });
+        return(response.data)
+    } catch (error) {
+        throw error.response.data;
     }
 }
 
 export const UpdateUser=async(data,id)=>{
+    //data contains the infomation to be updated, id is the id of the user
     try {
-        const response=await axios.put(`http://localhost:3001/api/user/update/${id}`,data,{
+        const response=await axios.put(`http://localhost:3001/api/user/${id}`,data,{
             withCredentials:true
         });
-        return( response.data)
+        return(response.data)
     } catch (error) {
-        throw new Error(
-            `Error Loginin: ${error}`
-        )
+        throw error.response.data;
     }
 }
 
@@ -59,23 +60,21 @@ export const getAllUser=async()=>{
         const response=await axios.get(`http://localhost:3001/api/user`);
         return(response.data)
     } catch (error) {
-        throw new Error(
-            `Error fetching users: ${error}`
-        )
+        throw error.response.data;
     }
 }
-export const getsingleUser=async(data)=>{
+export const getsingleUser=async(id)=>{
+    //id is the id of the user
     try {
-        const response=await axios.get(`https://localhost:3001/api/user/${data}`);
-        return( response)
+        const response=await axios.get(`https://localhost:3001/api/user/${id}`);
+        return( response.data)
     } catch (error) {
-        throw new Error(
-            `Error fetching user: ${error}`
-        )
+        return error;
     }
 }
 
 export const deleteUser=async(id)=>{
+     //id is the id of the user
     try {
          const response=await axios.delete(`https://localhost:3001/api/user/${id}`,{
             withCredentials:true
@@ -83,9 +82,7 @@ export const deleteUser=async(id)=>{
          return response
        
     } catch (error) {
-        throw new Error(
-            `Error deleting User: ${error}`
-        )
+        throw error.response.data;
     }
 }
 

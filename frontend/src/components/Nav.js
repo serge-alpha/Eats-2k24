@@ -1,11 +1,14 @@
  import React , { useState } from "react";
  import { AiOutlineUser } from "react-icons/ai";
  import { AiOutlineMenu} from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MdRestaurantMenu } from "react-icons/md";
+import { CiLogout } from "react-icons/ci";
 import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
+import { LogOutUser } from "../services/users";
 
- const Nav =({order})=>{
+ const Nav =({order,isLogin,setIsLogin})=>{
+    const navigate=useNavigate();
         const getdate=(value)=>{
             let mm='', dd='';
             switch(value.getMonth() + 1){
@@ -93,22 +96,32 @@ import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
             setEditState(0);
         }
     }   
+
+    const LoginLogout=async()=>{
+        if (isLogin){
+            await LogOutUser();
+            setIsLogin(false);
+            navigate('/');
+        }else{
+            navigate("/login");
+        }
+    }
     return(
         <div className="nav" >
-            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home"><h1><a href="#home">Eats</a></h1></NavLink></span>
-            <div className="nav_navigation">
+            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home" href="#home"><h1>Eats</h1></NavLink></span>
+            {isLogin?<div className="nav_navigation">
                 <div className="nav_delivery">
                     {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery" >Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}
                 </div>                
                 {/* <input type="location"className="nav_location" placeholder={location +"    "+dateValue+" "+time }/> */}
                 <p className="nav_location">{location}   {dateValue+" "+time }</p>
                 <input type="search" className="nav_search" placeholder="Search Meal"/>     
-            </div>
+            </div>:<></>}
             {/* ===============================Nav menu on small screens======================================== */}
             <div className={menustate===0?"hide_nav_navigation_s":"nav_navigation_s"}>
                 <div onClick={editState}>
-                    <p>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</p>
-                    <p><p>{location}</p></p>
+                    <span>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</span>
+                    <span><p>{location}</p></span>
                 </div>
                 <input type="search" className="nav_search" placeholder="Search Meal"/>
                 <hr/>
@@ -130,8 +143,8 @@ import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
                 </div>
             </div>
             <span>
-                <NavLink to="/home-cart" className="nav_reg" >{order.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink>
-                <NavLink to="/login" className="nav_reg"><AiOutlineUser/><p> Register</p></NavLink>
+                {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{order.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink></button>:<></>}
+                <button onClick={LoginLogout} className="button">{isLogin?<NavLink className="nav_reg"><CiLogout/><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><AiOutlineUser/><p>Login</p></NavLink>}</button>
             </span>
             
         </div>

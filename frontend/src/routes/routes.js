@@ -10,25 +10,40 @@ import AddRestaurant from "../pages/AddRestaurant";
 import Restaurant from "../pages/Restaurant";
 import AddMeal from "../pages/AddMeal";
 import Cart from "../pages/Cart";
+import Verify from "../pages/Verify";
+
 
 
 const Index=()=>{
     const [order,setOrder] =useState([]);
+    const [user,setUser] =useState();
+    const [isLogin,setIsLogin] =useState(false);
     const Order =(data)=>{
         setOrder(data)
     }
+
+    const User =(data)=>{   
+            setIsLogin(true);
+            setUser(data);  
+    }
+ 
+
+
+
     return(
         <BrowserRouter>
-            <Nav order={order}/>
+            <Nav isLogin={isLogin} setIsLogin={setIsLogin} order={order}/>
             <Routes>
                     <Route path="/" element={<StartPage/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/home" element={ <Home getOrder={Order}/> }/>
+                    <Route path="/login" element={<Login getUser={User}/>}/>
+                    <Route path="/auth/activate/:token" element={<Verify/>}/>
+                    <Route path="/home" element={ <Home getOrder={Order} user={user}/> }/>
                     <Route path="/home-cart" element={ <Cart data={order}/> }/>
                     <Route path="/register" element={<Register/>}/>
-                    <Route path="/add-restaurant" element={<AddRestaurant/>}></Route>
+                    <Route path="/add-restaurant" element={<AddRestaurant user={user}/>}></Route>
                     <Route path="/restaurant" element={<Restaurant/>}></Route>
                     <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>
+                    
             </Routes>
         </BrowserRouter>
     )

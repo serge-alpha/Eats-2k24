@@ -3,7 +3,7 @@ const Meal = require("../model/meal");
 const { uuid } = require('uuidv4');
 const slugify = require('slugify');
 const { getId } = require('../helper/cookie');
-const User = require('../model/user');
+const Restaurant = require('../model/rest');
 
 
 const getAllMeals = async(req,res)=>{
@@ -50,13 +50,14 @@ const createMeal = async(req,res)=>{
         })
 
         await newMeal.save();
-        const user=await User.findOne({id:chef});
-        let meals = user.meals;
+
+        const rest=await Restaurant.findOne({id:chef});
+        let meals = rest.meals;
         meals = [...meals,newMeal.id];
         const filter = {id:chef};
         const update = {meals}
-        const userUpdate = await User.findOneAndUpdate(filter,update,{new:true});
-        if(!userUpdate){
+        const RestUpdate = await Restaurant.findOneAndUpdate(filter,update,{new:true});
+        if(!RestUpdate){
            throw createError(422,"meals not added")
         }
         console.log(meals);
@@ -121,7 +122,7 @@ const updateMeal = async(req,res)=>{
     try {
         const {slug}=req.params;
         meal = await Meal.findOne({slug});
-        if(!meal){
+        if(!meal){ 
             return res.status(404).json({
                 msg:"meal doesn't exists",
             });

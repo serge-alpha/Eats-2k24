@@ -16,6 +16,11 @@ const mealSchema=new Schema({
         lowercase:true,
         trim:true
     },
+    delivery_type:{
+        type: String,
+        trim:true,
+        required: true,
+    },
     price:{
         type:Number,
         trim:true,

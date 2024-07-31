@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import Google from "../components/Google";
-// import { createUser } from "../services/users";
+import {Slide, ToastContainer, toast} from 'react-toastify';
+import { createUser } from "../services/users";
 
 const Register = ()=>{
-    const [cfrmEmail,setCfrmEmail] =useState(1);
-    const CfrmEmail=()=>{
-        return setCfrmEmail(0);
-    }
-console.log(cfrmEmail);
+
+const [cfrmEmail,setCfrmEmail] =useState(1);
 const [email,setEmail]=useState('');
 const [name,setName]=useState('');
 const [location,setLocation]=useState('');
@@ -40,15 +38,22 @@ const handleSubmit=async(event)=>{
         newUser.append('email',email);
         newUser.append('location',location);
         newUser.append('retype_password',retype_password);
-        // console.log(newUser);
-        // console.log("Success");
-    // const data = await createUser(newUser);
-      console.log(newUser);
-      console.log(name);
+    await createUser(newUser);
+    setCfrmEmail(0);
     } catch (error) {
-
-        alert(error)
+        toast.error(error.msg, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+            transition: Slide
+            });
+        console.log(error);
     }
+
     // setName('');
     // setPassword('');
     // setEmail('');
@@ -57,23 +62,40 @@ const handleSubmit=async(event)=>{
         <div className="login_container">
            
                  <form onSubmit={handleSubmit} className="login_form" >
-                     {/* { cfrmEmail===0?<h3>Please check your email and Click the confirmation Email...</h3>:
-                     <> */}
+                    <ToastContainer position="top-right"
+                        autoClose={5000}
+                        hideProgressBar
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                        />
+                      { cfrmEmail===0?<h3>Please check your email and Click the confirmation Email...</h3>:
+                     <> 
                         <Google/>
-                        <label htmlFor="name"/>
-                        <input type="text" placeholder="Name" className="login_input" name="name" value={name} onChange={handleNameChange}/>
-                        <label htmlFor="email"/>
-                        <input type="email" placeholder="Email" className="login_input" name="email" value={email} onChange={handleEmailChange}/>
-                        <label htmlFor="location"/>
-                        <input type="text" placeholder="Location" className="login_input" name="location" value={location} onChange={handleLocationChange}/>
-                        <label htmlFor="password"/>
-                        <input type="password" placeholder="Password" className="login_input" name="password" value={password} onChange={handlePasswordChange}/>
-                        <label htmlFor="retype_password"/>
-                        <input type="password" placeholder="Retype password" className="login_input" name="retype_password" value={retype_password} onChange={handleRetypePasswordChange}/>
-                        <button type="submit" className="button" onClick={CfrmEmail}> <b>Next<AiOutlineArrowRight/></b></button>
+                        <div>
+                            <label htmlFor="name"/>
+                            <input type="text" placeholder="Name" className="login_input" name="name" value={name} onChange={handleNameChange}/>
+                            <label htmlFor="email"/>
+                            <input type="email" placeholder="Email" className="login_input" name="email" value={email} onChange={handleEmailChange}/>
+                        </div>
+                        <div>
+                           <label htmlFor="location"/>
+                            <input type="text" placeholder="Location" className="login_input" name="location" value={location} onChange={handleLocationChange}/> 
+                        </div>
+                        <div>
+                            <label htmlFor="password"/>
+                            <input type="password" placeholder="Password" className="login_input" name="password" value={password} onChange={handlePasswordChange}/>
+                            <label htmlFor="retype_password"/>
+                            <input type="password" placeholder="Retype password" className="login_input" name="retype_password" value={retype_password} onChange={handleRetypePasswordChange}/>
+                        </div>
+                        <button type="submit" className="button"> <b>Next<AiOutlineArrowRight/></b></button>
                         <hr/>
                         <p>or <NavLink to="/login">login</NavLink></p> 
-                    {/* </>} */}
+                     </>} 
                 </form>     
         </div>
     )
