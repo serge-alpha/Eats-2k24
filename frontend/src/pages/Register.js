@@ -51,7 +51,6 @@ const handleSubmit=async(event)=>{
             theme: "colored",
             transition: Slide
             });
-        console.log(error);
     }
 
     // setName('');
@@ -96,7 +95,7 @@ const handleSubmit=async(event)=>{
                         <hr/>
                         <p>or <NavLink to="/login">login</NavLink></p> 
                      </>} 
-                </form>     
+                </form>  
         </div>
     )
 }

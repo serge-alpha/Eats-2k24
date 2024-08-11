@@ -3,11 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {Slide, ToastContainer, toast} from 'react-toastify';
 import { LoginUser } from "../services/users";
 
+
 const Login=({getUser})=>{
 
 const [email,setEmail] =useState('');
 const [password,setPassword] =useState('');
-let navigate=useNavigate();
+const navigate=useNavigate();
 //const dispatch=useNavigate();
 const handlePasswordChange=(event)=>{
     setPassword(event.target.value)
@@ -34,6 +35,7 @@ const handleSubmit=async(event)=>{
             });
         //dispatch(login(result.user))
         getUser(result.user.data);
+        console.log(result.message)
         navigate('/home');
 
     } catch (error) {

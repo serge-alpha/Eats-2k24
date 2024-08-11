@@ -22,8 +22,8 @@ const getAllMeals = async(req,res)=>{
 
 const createMeal = async(req,res)=>{
     try {
-        const {name,price,description,availability,delivery_price}=req.body;
-        const image = req.file.originalname;
+        const {name,price,description,delivery_price}=req.body;
+        // const image = req.file.originalname;
         if(!name){
             throw createError(404,'Please input Meal name');
         }
@@ -42,9 +42,8 @@ const createMeal = async(req,res)=>{
             name,
             price,
             description,
-            availability,
             delivery_price,
-            image,
+            // image,
             slug:slugify(name),
             chef
         })
@@ -66,7 +65,8 @@ const createMeal = async(req,res)=>{
             newMeal
         })
     } catch (error) {
-        return res.status(500).json({
+        console.log(error)
+        return res.status(404).json({
             msg:error.message,
         });
     }

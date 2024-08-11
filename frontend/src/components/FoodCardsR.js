@@ -20,7 +20,18 @@ const FoodcardRs =()=>{
                 // prop={modal} function here is used to send to the modal infomation about the card been clicked
                 // item contains the infomation to be displayed on the card
                 return(<FoodcardR  item={item}/>)
-            })}         
+            })}      
+             {items.map((item)=>{
+                // prop={modal} function here is used to send to the modal infomation about the card been clicked
+                // item contains the infomation to be displayed on the card
+                return(<FoodcardR  item={item}/>)
+            })}      
+             {items.map((item)=>{
+                // prop={modal} function here is used to send to the modal infomation about the card been clicked
+                // item contains the infomation to be displayed on the card
+                return(<FoodcardR  item={item}/>)
+            })}  
+        
         </div>
     )
 }

@@ -4,10 +4,14 @@ import Footer from "../components/Footer";
 
 const Restaurant=()=>{
     return(
-        <div className="restuarant">
-            <FoodcardRs/>
-            <Footer/>
+        <div>
+            <div className="restuarant">
+                <FoodcardRs/>    
+                <Footer/> 
+            </div> 
+                    
         </div>
+
     )
 }
 

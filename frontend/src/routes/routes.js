@@ -26,9 +26,6 @@ const Index=()=>{
             setIsLogin(true);
             setUser(data);  
     }
- 
-
-
 
     return(
         <BrowserRouter>
@@ -42,8 +39,10 @@ const Index=()=>{
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/add-restaurant" element={<AddRestaurant user={user}/>}></Route>
                     <Route path="/restaurant" element={<Restaurant/>}></Route>
-                    <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>
-                    
+                    <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>    
+            </Routes>
+            <Routes >
+
             </Routes>
         </BrowserRouter>
     )

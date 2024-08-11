@@ -5,9 +5,11 @@ export const createMeal=async(data)=>{
         const response=await axios.post('http://localhost:3001/api/meal',data,{
             withCredentials:true
         } );
-        return( response.data)
+        console.log(response);
+        // return( response)
     } catch (error) {
-       return  error.response.data;
+        console.log(error);
+    //    return  error.response.data;
     }
 }
 

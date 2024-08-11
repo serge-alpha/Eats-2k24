@@ -13,7 +13,7 @@ const FoodcardR =({item})=>{
         
     }
     return(
-        <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
+        <div className="card" > 
             <NavLink to="/restaurant/add-meal"> 
                 <div className="card_body">
                         <div className="card_head">

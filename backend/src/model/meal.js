@@ -7,7 +7,7 @@ const mealSchema=new Schema({
     },
     image:{
         type: String,
-        required: true
+        // required: true
     },
     name:{
         type: String,
@@ -15,11 +15,6 @@ const mealSchema=new Schema({
         minlenght:2,
         lowercase:true,
         trim:true
-    },
-    delivery_type:{
-        type: String,
-        trim:true,
-        required: true,
     },
     price:{
         type:Number,

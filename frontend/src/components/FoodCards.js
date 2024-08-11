@@ -29,6 +29,8 @@ const Foodcards =({order,meals,chefs})=>{
                 console.log(chef)
                 return(<Foodcard modal={modalstate} view={viewstate} chef={chef}  item={item}/>)
             })}
+            
+            
             <FoodModal  view={viewstate} item={modal} order={getOrder}/>
         </div>
     )
