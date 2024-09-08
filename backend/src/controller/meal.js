@@ -1,6 +1,6 @@
 const createError=require('http-errors');
 const Meal = require("../model/meal");
-const { uuid } = require('uuidv4');
+const { v4: uuidv4 } = require('uuid');
 const slugify = require('slugify');
 const { getId } = require('../helper/cookie');
 const Restaurant = require('../model/rest');
@@ -38,7 +38,7 @@ const createMeal = async(req,res)=>{
         }
         const chef = getId(req)
         const newMeal =new  Meal({
-            id: uuid(),
+            id: uuidv4(),
             name,
             price,
             description,
@@ -48,18 +48,20 @@ const createMeal = async(req,res)=>{
             chef
         })
 
-        await newMeal.save();
+       
 
-        const rest=await Restaurant.findOne({id:chef});
+        const rest=await Restaurant.findOne({chef});
         let meals = rest.meals;
         meals = [...meals,newMeal.id];
-        const filter = {id:chef};
+        console.log(meals);
+        const filter = {chef};
         const update = {meals}
         const RestUpdate = await Restaurant.findOneAndUpdate(filter,update,{new:true});
         if(!RestUpdate){
            throw createError(422,"meals not added")
         }
         console.log(meals);
+        await newMeal.save();
         return res.status(201).json({
             msg:"Meal created successfully",
             newMeal

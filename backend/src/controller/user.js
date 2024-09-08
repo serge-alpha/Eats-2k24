@@ -3,7 +3,7 @@ const { response } = require("express");
 const { EncryptPassword, comparePassword } = require("../helper/password");
 const { createToken } = require("../middleware/userfile");
 const User = require("../model/user");
-const { uuid } = require('uuidv4');
+const { v4: uuidv4 } = require('uuid');
 const jwt = require("jsonwebtoken");
 const sendEmailWithNodeMailer = require("../helper/email");
 const dev = require('../config');
@@ -90,7 +90,7 @@ const verifyUser = async (req, res) => {
                 throw createError(401,'User already exist with this email')
              }
             const newuser =new  User({
-            id: uuid(),
+            id: uuidv4(),
             email,
             password: hashPassword,
             name,
@@ -232,6 +232,7 @@ const logoutUser=async(req,res)=>{
             const id=req.headers.cookie;
             // await User.findOneAndUpdate({id})
             res.clearCookie(id)
+            User.findOneAndUpdate({id},{is_Login:false});
             res.status(200).json({message:"Logout succesful"}) 
         }else{
             res.status(404).json({message:"You are logged out . Please log in"})

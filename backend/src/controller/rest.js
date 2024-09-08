@@ -49,7 +49,8 @@ const createRest = async(req,res)=>{
             newRest
         })
     } catch (error) {
-        return res.status(500).json({
+        console.log(error.message);
+        return res.status(404).json({
             msg:error.message,
         });
     }

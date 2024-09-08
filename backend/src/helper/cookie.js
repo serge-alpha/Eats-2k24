@@ -1,17 +1,30 @@
 const jwt = require("jsonwebtoken");
+const createError=require('http-errors');
 const dev = require("../config");
-const getId = (req)=>{
+const getId = (req,res)=>{
     let id="";
-    const accessToken=req.headers.cookie.split('=')[1];
+    let accessToken;
+    try {
+        accessToken=req.headers.cookie.split(";")[1].split("=")[1];
+    } catch{
+        try{
+            accessToken=req.headers.cookie.split("=")[1];
+        }catch{
+            throw createError(404,"unexpected");
+        }
+    }
+    
+    // console.log(accessToken);
 
     jwt.verify(accessToken,String(dev.app.authkey),
         async(err,data)=>{
             if(err){
-                return res.status(404).json({message:'Invalid Token'})
+                throw createError(404,err);
+                
             }   
             id = data.id;     
         })
         return id;
 }
 
-module.exports = {getId}
+module.exports = {getId} 
