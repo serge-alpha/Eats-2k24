@@ -9,7 +9,7 @@ const storageUser= multer.diskStorage({
         cd(null, path.join( __dirname ,"../public/user/images"));
     },
     filename:(req,file,cd)=>{
-        cd(null,Date.now()+"-"+file.originalname);
+        cd(null,file.originalname);
     }
 })
 
@@ -18,13 +18,13 @@ const storageMeal= multer.diskStorage({
         cd(null, path.join( __dirname ,"../public/meal/images"));
     },
     filename:(req,file,cd)=>{
-        cd(null,Date.now()+"-"+file.originalname);
+        cd(null,file.originalname);
     }
 })
 
-const uploadMeal = multer({storageMeal,limits:{fileSize}});
+const uploadMeal = multer({storage:storageMeal,limits:{fileSize}});
 
-const uploadUser = multer({storageUser,limits:{fileSize}});
+const uploadUser = multer({storage:storageUser,limits:{fileSize}});
 
 
 

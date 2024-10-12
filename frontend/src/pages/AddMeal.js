@@ -18,8 +18,9 @@ const AddMeal=()=>{
         setName(event.target.value);
     };
     const handleImageChange=(event)=>{
-        setImage(event.target.value);
-    };
+        setImage(event.target.files[0]);
+        console.log(image);
+    }
     const handlePriceChange=(event)=>{
         setPrice(event.target.value);
     };
@@ -35,10 +36,11 @@ const AddMeal=()=>{
             const newMeal= new FormData();
             newMeal.append('name',name);
             newMeal.append('price',price);
+            newMeal.append('image',image);
             newMeal.append('description',description);
             newMeal.append('delivery_price',delivery_price);
         await createMeal(newMeal);
-        // navigate('/restaurant');
+        navigate('/restaurant');
         } catch (error) {
             toast.error(error.msg, {
                 position: "top-right",
@@ -69,16 +71,16 @@ const AddMeal=()=>{
             {/* <span className="meal_img">
                 <BsXCircle/>
                 <h5>Add meal Image</h5>
-            </span> */}
+            </span> value={image}*/}
             <span className="meal_img">
-                <input type="file" accept="image/*" capture="camera" value={image} onChange={handleImageChange}></input>
+                <input type="file" accept="image/*" capture="camera"  onChange={handleImageChange}></input>
                 <BsXCircle/>
                 <h5>Add meal Image</h5>
             </span>
             <form className="add_meal login_form" onSubmit={handleSubmit}> 
                     <h3>Add  Meal</h3>    
                     <input type="text" placeholder="Meal's Name" className="login_input" name="mealname" onChange={handleNameChange} value={name}/>
-                    <input type="number"  placeholder="Price(CFA)" className="login_input" name="mealprice" min="500" onChange={handlePriceChange} value={price}/>
+                    <input type="number"  placeholder="Price(CFA)" className="login_input" name="mealprice" min="300" onChange={handlePriceChange} value={price}/>
                     <input type="number"  placeholder="Delivery Fee(CFA)" className="login_input" name="mealdelivery_fee" min="500" onChange={handleDeliveryChange} value={delivery_price}/>
                     {/*-------------------- this section will be added to the next release--------------------
                      <span className="meal_discount">
@@ -89,7 +91,7 @@ const AddMeal=()=>{
                     <span className="discount">
                         <p>Add discount</p> 
                     </span> */}
-                    <textarea type="text" className="login_input text_area" placeholder="Meal Description" name="mealdescription" onChange={handleDescriptionChange} value={description}/>
+                    <textarea type="text" className="login_input text_area" placeholder="Meal Description" minLength={10} name="mealdescription" onChange={handleDescriptionChange} value={description}/>
                     <button type="submit" className="button"><b>Create</b></button>
                     <hr/>
             </form>

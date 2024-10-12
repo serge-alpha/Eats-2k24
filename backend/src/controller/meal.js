@@ -5,7 +5,6 @@ const slugify = require('slugify');
 const { getId } = require('../helper/cookie');
 const Restaurant = require('../model/rest');
 
-
 const getAllMeals = async(req,res)=>{
     try {
         const meals = await Meal.find({});
@@ -23,7 +22,7 @@ const getAllMeals = async(req,res)=>{
 const createMeal = async(req,res)=>{
     try {
         const {name,price,description,delivery_price}=req.body;
-        // const image = req.file.originalname;
+        const image = req.file || req.file.path;
         if(!name){
             throw createError(404,'Please input Meal name');
         }
@@ -47,7 +46,12 @@ const createMeal = async(req,res)=>{
             slug:slugify(name),
             chef
         })
-
+        if(image && image.size > (1024 *1024)){
+            throw createError(400,'Image size must be less than 2Mbs');
+        }    
+        if(image){
+            newMeal.image=image.path;
+        }
        
 
         const rest=await Restaurant.findOne({chef});
@@ -76,8 +80,8 @@ const createMeal = async(req,res)=>{
 
 const getOneMeal = async(req,res)=>{
     try {
-        const {id}=req.params;
-        const meal = await Meal.findOne({id});
+        const {slug}=req.params;
+        const meal = await Meal.findOne({slug});
         if(!meal){
             return res.status(404).json({
                 msg:"meal doesn't exists",
@@ -123,14 +127,26 @@ const deleteMeal = async(req,res)=>{
 const updateMeal = async(req,res)=>{
     try {
         const {slug}=req.params;
-        meal = await Meal.findOne({slug});
+        console.log(slug);
+        const meal = await Meal.findOne({slug});
         if(!meal){ 
             return res.status(404).json({
                 msg:"meal doesn't exists",
             });
         } 
         const filter = {slug};
-        const update = {...req.body}
+        let update = {...req.body}
+        if(req.body.name){
+            update={...update,slug:slugify(req.body.name)}
+        }
+        const image = req.file && req.file.path;
+        if(image && image.size > (1024 *1024)){
+            throw createError(400,'Image size must be less than 2Mbs');
+        }    
+        if(image){
+            update={...update,image:image}
+        }
+
         const mealUpdate = await Meal.findOneAndUpdate(filter,update,{new:true});
         if(!mealUpdate){
             return res.status(422).json({

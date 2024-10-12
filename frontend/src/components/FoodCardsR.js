@@ -1,36 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FoodcardR from "./FoodCardR";
 import AddFoodCardR from "./AddFoodCardR";
+import { Slide, toast } from "react-toastify";
+import { getAllRest } from "../services/rest";
 
-const FoodcardRs =()=>{
-    const items = [
-        {name:"Garri and Eru",price:"2000"},
-        {name:"Rice and Bean",price:"1000"},
-        {name:"Achu",price:"1500"},
-        {name:"CornChaff",price:"700"},
-        {name:"Pancakes",price:"600"},
-        {name:"Cakes",price:"1700"},
-        {name:"Peanut",price:"500"},
-        {name:"Water and Chicken",price:"500"},
-    ];
+const FoodcardRs =({user,mealList})=>{
+    const [meals,setMeals]=useState([]);
+    useEffect(()=>{
+        const fetch=async()=>{
+            try {
+                const Meals= await getAllRest();
+                const rest=Meals.rest.find((rest)=>{
+                    return user.id===rest.chef;
+                });
+                setMeals(rest.meals);
+                
+            } catch (error) {
+                toast(error.msg, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "colored",
+                    transition: Slide
+                    });
+            }
+            // console.log(meals);
+        };
+        fetch();
+       
+    },[user.id]);
     return(
         <div className="cards">
             <AddFoodCardR/>
-            {items.map((item)=>{
+            {meals.map((meal)=>{
                 // prop={modal} function here is used to send to the modal infomation about the card been clicked
                 // item contains the infomation to be displayed on the card
-                return(<FoodcardR  item={item}/>)
-            })}      
-             {items.map((item)=>{
-                // prop={modal} function here is used to send to the modal infomation about the card been clicked
-                // item contains the infomation to be displayed on the card
-                return(<FoodcardR  item={item}/>)
-            })}      
-             {items.map((item)=>{
-                // prop={modal} function here is used to send to the modal infomation about the card been clicked
-                // item contains the infomation to be displayed on the card
-                return(<FoodcardR  item={item}/>)
-            })}  
+                const item= mealList.find((item)=>{
+                    return (item.id===meal)
+                });
+                return(item?<FoodcardR  item={item}/>:<></>);
+            })}       
         
         </div>
     )

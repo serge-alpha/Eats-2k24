@@ -1,6 +1,5 @@
 const express=require('express');
 const morgan = require('morgan');
-const serverless = require('serverless-http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const corsOptions ={
@@ -30,7 +29,7 @@ app.use('/api/meal',mealRouter);
 app.use('/api/restuarant',restRouter);
 
 
-app.use('/.netlify/functions/index',(req,res)=>{
+app.use('/',(req,res)=>{
     return res.status(200).json({
         message:"test route"
     }) ;
@@ -54,5 +53,3 @@ app.use((err,req,res,next)=>{
         msg: err.message|| "Server error"
     })
 })
-
-module.exports.handler =serverless(app);

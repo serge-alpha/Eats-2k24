@@ -6,9 +6,15 @@ import { MdRestaurantMenu } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
 import { LogOutUser } from "../services/users";
+import { useSelector } from "react-redux";
 
- const Nav =({order,isLogin,setIsLogin})=>{
+ const Nav =({isLogin,setIsLogin,getFilterValue})=>{
     const navigate=useNavigate();
+    const {meals} = useSelector(status=>status.meal);
+    const [filter,setFilter]=useState('');
+    const setFilterValue=()=>{
+        getFilterValue(filter);
+    }
         const getdate=(value)=>{
             let mm='', dd='';
             switch(value.getMonth() + 1){
@@ -123,7 +129,10 @@ import { LogOutUser } from "../services/users";
                     <span>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</span>
                     <span><p>{location}</p></span>
                 </div>
-                <input type="search" className="nav_search" placeholder="Search Meal"/>
+                <form onSubmit={setFilterValue()}>
+                    <input type="search" className="nav_search" placeholder="Search Meal" onChange={(e) => setFilter(e.target.value)}/>
+                    <button type="submit"></button>
+                </form>
                 <hr/>
                 <div className={editstate===0?"hide_nav_edit":"nav_edit"}>
                     <h4>Delivery Type</h4>
@@ -143,7 +152,7 @@ import { LogOutUser } from "../services/users";
                 </div>
             </div>
             <span>
-                {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{order.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink></button>:<></>}
+                {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{meals.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink></button>:<></>}
                 <button onClick={LoginLogout} className="button">{isLogin?<NavLink className="nav_reg"><CiLogout/><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><AiOutlineUser/><p>Login</p></NavLink>}</button>
             </span>
             

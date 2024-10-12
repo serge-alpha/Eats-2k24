@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { BsPersonWalking } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { UpdateMeal } from "../services/meal";
 
 const FoodcardR =({item})=>{
-    const [avialabilty,setAvialability]=useState(true)
+    const [availabilty,setAvailability]=useState(item.availability)
     const avialable=()=>{
-        if (avialabilty){
-           return setAvialability(false)
+        if (availabilty){
+            UpdateMeal({availability:false},item.slug);
+           return setAvailability(false)
         }else{
-           return  setAvialability(true)
+            UpdateMeal({availability:true},item.slug);
+           return  setAvailability(true)
         }
         
     }
+    console.log(item)
     return(
-        <div className="card" > 
+        <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
             <NavLink to="/restaurant/add-meal"> 
                 <div className="card_body">
                         <div className="card_head">
@@ -29,12 +33,12 @@ const FoodcardR =({item})=>{
                 </div>
             </NavLink>
             <div className="card_info">
-                
                     <span>
                         <h3><b>{item.name}</b></h3>
-                        <NavLink className="restbtn" onClick={()=>avialable()}>{avialabilty?<b>Avialable</b>:<b>Not Avialable</b>}</NavLink>
+                        <span>{item.rating}</span>
                     </span>
-                   <span>(4.0)</span>
+                    <p onClick={()=>avialable()}>{availabilty?<b>Avialable</b>:<b>Not Avialable</b>}</p>
+                   
             </div>
         </div>
         

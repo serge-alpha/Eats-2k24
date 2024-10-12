@@ -35,7 +35,6 @@ const handleSubmit=async(event)=>{
             });
         //dispatch(login(result.user))
         getUser(result.user.data);
-        console.log(result.message)
         navigate('/home');
 
     } catch (error) {

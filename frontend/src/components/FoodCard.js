@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
 import { IconContext } from "react-icons";
@@ -18,9 +19,21 @@ const Foodcard =({modal,item,view,chef})=>{
       modal(item)
       view("open")
     }
+    const rating=(value)=>{
+        for(let i=value; i<0 ; i--){
+            if(i===0.5){
+                return(<FaStarHalf />)
+            }else{
+                console.log(i);
+                return(<FaStar/>)
+            }
+            
+        }
+    };
     return(
         <div className="card"> 
-            <div className="card_body" >
+            <div className="card_body" style={item.image?{backgroundImage:`http://localhost:3001/public/meal/images/${item.image}`}:{backgroundColor:"initial"}}>
+            <img src={`http://localhost:3001/public/meal/images/${item.image}`} alt={item.name} />
                 <div className="card_head">
                     <span>Special offer</span>
                     <span onClick={()=>favourite()}>
@@ -39,10 +52,16 @@ const Foodcard =({modal,item,view,chef})=>{
             <div className="card_info">
                     <span>
                         <h3><b>{item.name}</b></h3>
-                        <p> 30-40mins</p>
-                        {chef?<p>By {chef.restaurant_name===""?chef.name:chef.restaurant_name}</p>:<></>}
+                        {/* Time taken for delivery */} 
+                        {/* have to edit database so it takes in decimals too as rating values */}
+                        <h5>{rating(item.rating)}</h5>
+                        {/* <p> 30-40mins</p> */}
+                       
                     </span>
-                    <p>{item.rating}</p>             
+                    <span>
+                        <h4><b>{item.price} CFA</b></h4>
+                    </span>
+                                
             </div>
         </div>
     )

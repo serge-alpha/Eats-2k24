@@ -23,7 +23,6 @@ const getAllRest = async(req,res)=>{
 const createRest = async(req,res)=>{
     try {
         const {restaurant_name,delivery_type,delivery_distance}=req.body;
-        // const image = req.file.originalname;
         if(!restaurant_name){
             throw createError(404,'Please input Restuarant name');
         }
@@ -41,6 +40,8 @@ const createRest = async(req,res)=>{
             slug:slugify(restaurant_name),
             chef
         })
+
+        
 
         await newRest.save();
         await User.findOneAndUpdate({id:chef},{is_Chef:true},{new:true});

@@ -3,23 +3,28 @@ import FoodCards from "../components/FoodCards";
 import Footer from "../components/Footer";
 import { getAllMeals } from "../services/meal";
 import { Slide, ToastContainer, toast } from "react-toastify";
-import { getAllUser } from "../services/users";
+import { getAllRest } from "../services/rest";
 // import { FaStar } from "react-icons/fa";
 
 
-const Home =({getOrder,user})=>{
-    const [meals,setMeals]=useState([]);
+const Home =({user,filter})=>{
     const [chefs,setChefs]=useState([]);
     const [userdata,setUserData]=useState();
     //const[mealStatus,setMealStatus]=useState(false);
 
+    const[mealList,setMeals] =useState([]);
+    
+    
+
     useEffect(()=>{
+        const getmeals=async()=>{
+             const list =await getAllMeals();
+             setMeals(list.meals);
+        }
         const fetch=async()=>{
             try {
-                const Meals= await getAllMeals();
-                const User= await getAllUser();
-                setMeals(Meals.meals);
-                setChefs(User.users);
+                const Chef= await getAllRest();
+                setChefs(Chef.rest);
                 
             } catch (error) {
                 toast(error.msg, {
@@ -34,8 +39,8 @@ const Home =({getOrder,user})=>{
                     });
             }
             setUserData(user);
-            console.log(userdata);
         };
+        getmeals();
         fetch();
        
     },[user,userdata]);
@@ -105,7 +110,7 @@ const Home =({getOrder,user})=>{
                 </div>
                 <div className="card_rows">
                     {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}
-                    <FoodCards meals={meals} chefs={chefs} order={getOrder}/>
+                    <FoodCards meals={mealList} chefs={chefs} filter={filter}/>
                 </div>
                 
             </div>
