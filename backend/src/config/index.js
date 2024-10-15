@@ -1,5 +1,5 @@
 
-dotenv.config();
+require('dotenv').config();
 
 const dev={
     app:{
