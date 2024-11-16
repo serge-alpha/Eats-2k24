@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
     const setFilterValue=()=>{
         getFilterValue(filter);
     }
+    //Assigning month number to thier abrbrevations
         const getdate=(value)=>{
             let mm='', dd='';
             switch(value.getMonth() + 1){
@@ -54,7 +55,7 @@ import { useSelector } from "react-redux";
     const[dateValue,setDateValue] = useState("Today");
     const[time,setTime] = useState(String((new Date().getUTCHours()+1)+':'+new Date().getUTCMinutes()));
 /*=======================================================================================================*/
-    
+    //setting corresponding values to location, data and time 
     const handleLocationChange=(event)=>{
         setLocation(event.target.value)
     }
@@ -69,7 +70,7 @@ import { useSelector } from "react-redux";
         setTime(event.target.value)
     }
 /*----------------------------------------------------------------*/
-
+//to handle devilery or pickup order choice 
     const orderChoice=()=>{
         if (orderType===0){
             setOrderType(1);
@@ -77,7 +78,7 @@ import { useSelector } from "react-redux";
             setOrderType(0);
         }
     }
-
+//to handle now or later selected
     const orderChoiceTime=()=>{
         if (orderTime===0){
             setOrderTime(1);
@@ -85,6 +86,7 @@ import { useSelector } from "react-redux";
             setOrderTime(0);
         }
     }
+//to toggle menue dropdown on mobile devices or small devices
     const [menustate,setMenuState] = useState(0);
     const menuState=()=>{
         if (menustate===0){
@@ -93,8 +95,8 @@ import { useSelector } from "react-redux";
             setMenuState(0);
         }
     }
-
-    const [editstate,setEditState] = useState(1);
+//toggle order state from show just menue to show fields to edit order   
+    const [editstate,setEditState] = useState(0);
     const editState=()=>{
         if (editstate===0){
             setEditState(1);
@@ -112,27 +114,40 @@ import { useSelector } from "react-redux";
             navigate("/login");
         }
     }
+
     return(
         <div className="nav" >
-            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</b><NavLink to="/home" href="#home"><h1>Eats</h1></NavLink></span>
+            <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>
+               {isLogin? <>{menustate===1?<MdRestaurantMenu />:<AiOutlineMenu/>}</>:<></>}
+               </b>
+                <NavLink to="/home" href="#home">
+                    <h1>Eats</h1>
+                </NavLink>
+            </span>
             {isLogin?<div className="nav_navigation">
                 <div className="nav_delivery">
-                    {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery" >Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}
+                    {orderType===1?<><span onClick={()=>orderChoice()}>Delivery</span><span className="delivery">Pickup</span></>:<><span className="delivery">Delivery</span><span onClick={()=>orderChoice()}>Pickup</span></>}
+                    <p  onClick={menuState} className="nav_location">{location}   {dateValue+" "+time }</p>
                 </div>                
                 {/* <input type="location"className="nav_location" placeholder={location +"    "+dateValue+" "+time }/> */}
-                <p className="nav_location">{location}   {dateValue+" "+time }</p>
+                
                 <input type="search" className="nav_search" placeholder="Search Meal"/>     
             </div>:<></>}
             {/* ===============================Nav menu on small screens======================================== */}
             <div className={menustate===0?"hide_nav_navigation_s":"nav_navigation_s"}>
-                <div onClick={editState}>
-                    <span>{orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}</span>
-                    <span><p>{location}</p></span>
-                </div>
+                
                 <form onSubmit={setFilterValue()}>
                     <input type="search" className="nav_search" placeholder="Search Meal" onChange={(e) => setFilter(e.target.value)}/>
-                    <button type="submit"></button>
-                </form>
+                    {/* <button type="submit"></button> */}
+                </form>                
+                <div onClick={editState} >
+                    <span className="nav_order">
+                        {orderType===1?<p>Pick up <BsDot />{dateValue} <BsDot/></p>:<p>Deliver<BsDot/> {dateValue}<BsDot/>{time}</p>}
+                        <p>{location}</p>
+                    </span>
+                </div>
+                {editstate===0?<p className="nav_order_info">Click above text to change details</p>:<></>}
+
                 <hr/>
                 <div className={editstate===0?"hide_nav_edit":"nav_edit"}>
                     <h4>Delivery Type</h4>
@@ -143,17 +158,38 @@ import { useSelector } from "react-redux";
                         {orderTime===1?<><span onClick={()=>orderChoiceTime()}>Now</span><span className="delivery" >Later</span></>:<><span className="delivery">Now</span><span onClick={()=>orderChoiceTime()}>Later</span></>}
                     </div>
                     {orderTime===1?<div className="nav_edit_date">
+                        <p>Date</p>
                         <input type="date" name="date" onChange={handleDateChange}  className="login_input" placeholder="Date"/>
+                        <p>Time</p>
                         <input type="time" name="time" onChange={handleTimeChange}  className="login_input" placeholder="Time"/>
                     </div>:<></>}
                     <label htmlFor="location"/>
-                    <input type="text" placeholder="Location" className="login_input" onChange={handleLocationChange} name="location" value={location} required/>
+                    <input type="text" placeholder="Location" className="nav_search" onChange={handleLocationChange} name="location" value={location} required/>
                     <button type="submit" className="button nav_edit_btn" onClick={editState}> <b>Done</b></button>
+                </div>
+            </div>
+            {/* ===============================Nav menu on Large screens className={menustate===0?"hide_nav_navigation_s":"nav_navigation_s"}======================================== */}
+            <div className={menustate===1?"modal":"hide_nav_navigation_s"}>   
+                <hr></hr>             
+                <div className="nav_edit">
+                   <div className="nav_edit_date">
+                        <p>Date</p>
+                        <input type="date" name="date" onChange={handleDateChange}  className="login_input" placeholder="Date" id="date"/>
+                        <p>Time</p>
+                        <input type="time" name="time" onChange={handleTimeChange}  className="login_input" placeholder="Time" value={time}/>
+                    </div>
+                    <label htmlFor="location"/>
+                    <p>Location</p>
+                    <input type="text" placeholder="Location" className="login_input" onChange={handleLocationChange} name="location" value={location} required/>
+                    <hr></hr>
+                    <button type="submit" className="button nav_edit_btn" onClick={menuState}> <b>Done</b></button>
                 </div>
             </div>
             <span>
                 {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{meals.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink></button>:<></>}
-                <button onClick={LoginLogout} className="button">{isLogin?<NavLink className="nav_reg"><CiLogout/><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><AiOutlineUser/><p>Login</p></NavLink>}</button>
+                <button onClick={LoginLogout} className="button">
+                    {isLogin?<NavLink className="nav_reg"><CiLogout/><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><AiOutlineUser/><p>Login</p></NavLink>}
+                </button>
             </span>
             
         </div>

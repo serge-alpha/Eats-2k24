@@ -36,9 +36,11 @@ const Foodcard =({modal,item,view,chef})=>{
             <img src={`http://localhost:3001/public/meal/images/${item.image}`} alt={item.name} />
                 <div className="card_head">
                     <span>Special offer</span>
-                    <span onClick={()=>favourite()}>
+                    {/* favourites will be added later */}
+                    <span></span>
+                    {/* <span onClick={()=>favourite()}>
                        {fav==="AiOutlineHeart"?<AiOutlineHeart />: <IconContext.Provider value={{ color: "#f7990c"}}><AiFillHeart /></IconContext.Provider>} 
-                    </span>
+                    </span> */}
                     
                 </div>
                 <div className="card_order" onClick={openModal}>
