@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import React from "react";
+// import { AiOutlineHeart } from "react-icons/ai";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
+// import { AiFillHeart } from "react-icons/ai";
 import { BsPersonWalking } from "react-icons/bs";
-import { IconContext } from "react-icons";
+// import { IconContext } from "react-icons";
 
 const Foodcard =({modal,item,view,chef})=>{
-    const [fav,setFAv]=useState("AiOutlineHeart")
-    const favourite=()=>{
-        if (fav==="AiOutlineHeart"){
-           return setFAv("AiFillHeart")
-        }else{
-           return  setFAv("AiOutlineHeart")
-        } 
-    }
+    // const [fav,setFAv]=useState("AiOutlineHeart")
+    // const favourite=()=>{
+    //     if (fav==="AiOutlineHeart"){
+    //        return setFAv("AiFillHeart")
+    //     }else{
+    //        return  setFAv("AiOutlineHeart")
+    //     } 
+    // }
     const openModal=()=>{
         // sends card data to the parent.. Foodcards
       modal(item)
