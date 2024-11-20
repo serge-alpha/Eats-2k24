@@ -1,5 +1,5 @@
 import axios from "axios"
-const backendport="https://eatsbackend.onrender.com/"
+
 export const createMeal=async(data)=>{
     try {
         const response=await axios.post('https://eatsbackend.onrender.com/api/meal',data,{
