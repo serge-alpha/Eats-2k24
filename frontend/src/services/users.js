@@ -24,7 +24,7 @@ export const verifyUser=async(token)=>{
 
 export const LoginUser=async(data)=>{
     try {
-        const response=await axios.post('http://localhost:3001/api/user/login',data,{
+        const response=await axios.post('https://eatsbackend.onrender.com/api/user/login',data,{
             withCredentials:true
         });
         return(response.data)
@@ -34,7 +34,7 @@ export const LoginUser=async(data)=>{
 }
 export const LogOutUser=async()=>{
     try {
-        const response=await axios.post('http://localhost:3001/api/user/logout',{
+        const response=await axios.post('https://eatsbackend.onrender.com/api/user/logout',{
             withCredentials:true
         });
         return(response.data)
@@ -46,7 +46,7 @@ export const LogOutUser=async()=>{
 export const UpdateUser=async(data,id)=>{
     //data contains the infomation to be updated, id is the id of the user
     try {
-        const response=await axios.put(`http://localhost:3001/api/user/${id}`,data,{
+        const response=await axios.put(`https://eatsbackend.onrender.com/api/user/${id}`,data,{
             withCredentials:true
         });
         return(response.data)
@@ -57,7 +57,7 @@ export const UpdateUser=async(data,id)=>{
 
 export const getAllUser=async()=>{
     try {
-        const response=await axios.get(`http://localhost:3001/api/user`);
+        const response=await axios.get(`https://eatsbackend.onrender.com/api/user`);
         return(response.data)
     } catch (error) {
         throw error.response.data;
@@ -66,7 +66,7 @@ export const getAllUser=async()=>{
 export const getsingleUser=async(id)=>{
     //id is the id of the user
     try {
-        const response=await axios.get(`https://localhost:3001/api/user/${id}`);
+        const response=await axios.get(`https://eatsbackend.onrender.com/api/user/${id}`);
         return( response.data)
     } catch (error) {
         return error;
@@ -76,7 +76,7 @@ export const getsingleUser=async(id)=>{
 export const deleteUser=async(id)=>{
      //id is the id of the user
     try {
-         const response=await axios.delete(`https://localhost:3001/api/user/${id}`,{
+         const response=await axios.delete(`https://eatsbackend.onrender.com/api/user/${id}`,{
             withCredentials:true
          }); 
          return response
