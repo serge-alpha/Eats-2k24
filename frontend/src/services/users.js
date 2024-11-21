@@ -1,9 +1,9 @@
 import axios from "axios"
 
-
+//http://localhost:3001
 export const createUser=async(data)=>{
     try {
-        const response=await axios.post('http://localhost:3001/api/user/',data);
+        const response=await axios.post('https://eatsbackend.onrender.com/api/user/',data);
         return(response)
     } catch (error) {
         throw error.response.data;
@@ -13,7 +13,7 @@ export const createUser=async(data)=>{
 export const verifyUser=async(token)=>{
     try {
         // console.log(token)
-        const response=await axios.post('http://localhost:3001/api/user/verify',{token:token},{
+        const response=await axios.post('https://eatsbackend.onrender.com/api/user/verify',{token:token},{
             withCredentials:true
         });
         return( response)
