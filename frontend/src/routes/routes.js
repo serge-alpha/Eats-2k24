@@ -17,8 +17,8 @@ import Verify from "../pages/Verify";
 const Index=()=>{
     const [user,setUser] =useState();
     const [filter,setFilter] =useState('');
-    // we need to change the state to false by defualt.... we changed it to true for testing
-    const [isLogin,setIsLogin] =useState(true);
+    //// we need to change the state to false by defualt.... we changed it to true for testing
+    const [isLogin,setIsLogin] =useState(false);
   
 //check and update user login state
     const User =(data)=>{   
