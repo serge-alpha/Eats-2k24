@@ -1,9 +1,10 @@
 import axios from "axios"
 
-//http://localhost:3001
+// const address="http://localhost:3001/api/user/";
+const address='https://eatsbackend.onrender.com/api/user/';
 export const createUser=async(data)=>{
     try {
-        const response=await axios.post('https://eatsbackend.onrender.com/api/user/',data);
+        const response=await axios.post(address,data);
         return(response)
     } catch (error) {
         throw error.response.data;
@@ -13,7 +14,7 @@ export const createUser=async(data)=>{
 export const verifyUser=async(token)=>{
     try {
         // console.log(token)
-        const response=await axios.post('https://eatsbackend.onrender.com/api/user/verify',{token:token},{
+        const response=await axios.post(address+'verify',{token:token},{
             withCredentials:true
         });
         return( response)
@@ -24,7 +25,7 @@ export const verifyUser=async(token)=>{
 
 export const LoginUser=async(data)=>{
     try {
-        const response=await axios.post('https://eatsbackend.onrender.com/api/user/login',data,{
+        const response=await axios.post(address+'login',data,{
             withCredentials:true
         });
         return(response.data)
@@ -34,7 +35,7 @@ export const LoginUser=async(data)=>{
 }
 export const LogOutUser=async()=>{
     try {
-        const response=await axios.post('https://eatsbackend.onrender.com/api/user/logout',{
+        const response=await axios.post(address+'logout',{
             withCredentials:true
         });
         return(response.data)
@@ -46,7 +47,7 @@ export const LogOutUser=async()=>{
 export const UpdateUser=async(data,id)=>{
     //data contains the infomation to be updated, id is the id of the user
     try {
-        const response=await axios.put(`https://eatsbackend.onrender.com/api/user/${id}`,data,{
+        const response=await axios.put(address+`${id}`,data,{
             withCredentials:true
         });
         return(response.data)
@@ -57,7 +58,7 @@ export const UpdateUser=async(data,id)=>{
 
 export const getAllUser=async()=>{
     try {
-        const response=await axios.get(`https://eatsbackend.onrender.com/api/user`);
+        const response=await axios.get(address);
         return(response.data)
     } catch (error) {
         throw error.response.data;
@@ -66,7 +67,7 @@ export const getAllUser=async()=>{
 export const getsingleUser=async(id)=>{
     //id is the id of the user
     try {
-        const response=await axios.get(`https://eatsbackend.onrender.com/api/user/${id}`);
+        const response=await axios.get(address+`${id}`);
         return( response.data)
     } catch (error) {
         return error;
@@ -76,7 +77,7 @@ export const getsingleUser=async(id)=>{
 export const deleteUser=async(id)=>{
      //id is the id of the user
     try {
-         const response=await axios.delete(`https://eatsbackend.onrender.com/api/user/${id}`,{
+         const response=await axios.delete(address+`${id}`,{
             withCredentials:true
          }); 
          return response

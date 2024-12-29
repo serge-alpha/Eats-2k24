@@ -256,38 +256,37 @@ code {
 
 /* ----------------------------------------BUTTON FOR ALL--------------------------------------------- */
 .button{
-  padding: 0.6rem;
-  border-radius: 0.5rem;
   width: max-content;
   border: none;
   text-decoration: none;
   color:#000;
-  background-color: #fff;
+  background-color: transparent;
   cursor: pointer;
   transition: background-color 400ms ease;
 }
 .button:hover{
-  color: white;
-  background-color: #f7990c;
+  border-bottom: 1px solid #000;
 }
 /* -------------------------------------------LOGIN PAGE------------------------------------------*/
 .login_container{
-  height: 90vh;
+  height: 93vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: auto 1rem; */
+  background-color: #eeeeee;
   
 }
 .login_form{
   display: flex;
   gap:2rem;
+  box-shadow: #000 0px 0px 6px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
   /* border: 1px solid #8f5c0f; */
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   padding:5rem 2rem 2rem 2rem;
   width: 40%;
 }
@@ -437,7 +436,7 @@ code {
   align-items:center;
   gap: 12rem;
   height: 84vh;
-  /* width: 100%; */
+  width: 100vw;
   background-color: #f7990c;
   color: #fafafa;
 }
@@ -458,7 +457,7 @@ code {
       }
       .home_footer{
         display: flex;
-        width: 100vw;
+        width: 100%;
         flex-direction: column;
         border-top:0.1rem solid white;
       }
@@ -549,11 +548,12 @@ code {
 }
 /* -----------------------------------------------ORDER MODAL----------------------- */
 .modal{
-  height:70vh;
+  height:fit-content;
+  min-height: 70vh;
   width: 70vw;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 15px 0 rgba(0, 0, 0, 0.19);
-  top:5rem;
-  left:9%;
+  top:5vw;
+  left:12vw;
   position: absolute;
   position: fixed;
   z-index: 3;
@@ -658,9 +658,12 @@ cursor: pointer;
   gap: 1.5rem;
   padding-top: 3rem;
 }
+.checkbox{
+  display: flex;
+}
 .restuarant_checkbox{
   display: flex;
-  width: 45%;
+  width: 50%;
   justify-content: center;
   align-items: center;
 }
@@ -675,6 +678,17 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   font-size: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+.add_meal>span:first-of-type{
+  display: flex;
+  color: #7e7c7c;
+  flex-direction: column;
+  background-color: white ;
+  width: 30vw;
+  padding: 0.8rem;
+  border-bottom: 1px solid black;
   align-items: center;
   justify-content: center;
 }
@@ -702,6 +716,7 @@ cursor: pointer;
 .text_area{
   width: 100%;
   height: 12rem;
+  min-height: 12vh;
   resize: none;
 }
 .meal_form{
@@ -971,7 +986,7 @@ cursor: pointer;
   /* ---------------------LOGIN PAGE--------------------- */
   .login_form{
     width: 80%;
-    height: 80vh;
+    height: 90vh;
   }
   .login_container{
     height: 100%;
@@ -993,7 +1008,7 @@ cursor: pointer;
   }
   .modal{
     gap: 1rem;
-    top: 11%;
+    top: 8%;
     left: 2.5%;
   }
   .modal_img{
@@ -1015,6 +1030,7 @@ cursor: pointer;
     height: 3rem;
     width: 3rem;
    }
+
   /* ---------------------cardS--------------------- */
   .cards{
     grid-template-columns: auto;
@@ -1031,6 +1047,14 @@ cursor: pointer;
   .add_rest{
     height: 55vh;
     margin-top: 2rem;
+  }
+  .add_meal>span:first-of-type{
+    align-items: flex-start;
+    width: 60vw;
+  }
+  .restuarant_checkbox{
+   align-items: flex-start;
+  flex-flow:column;
   }
   /* ------------------FOOTER------------------- */
   .footer{
@@ -1067,6 +1091,7 @@ cursor: pointer;
     'info info';
     height: 100%;
   }
+
   .start_container{
     padding-left: 0vw;
     padding-right: 0;

@@ -15,7 +15,6 @@ const FoodcardR =({item})=>{
         }
         
     }
-    console.log(item)
     return(
         <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
             <NavLink to="/restaurant/add-meal"> 

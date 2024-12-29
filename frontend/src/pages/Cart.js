@@ -36,7 +36,7 @@ const Cart =()=>{
                                 <image src="#" alt="image" />
                              </div>
                              <span>
-                                <p>{meal.item.name}</p>
+                                <h2>{meal.item.name}</h2>
                                 <h3>{meal.value} . {meal.item.price} XFA</h3>
                              </span>
 

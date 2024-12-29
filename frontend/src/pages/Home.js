@@ -74,7 +74,7 @@ const Home =({user,filter})=>{
                 </div>
                 <div className="category_filter">
                     <hr/>
-                {/*--------------------- this section is to be added in the next release --------------------
+                {/* --------------------- this section is to be added in the next release --------------------
                     <div className="dropdown_pannel_1">
                         <button className="dropbtn">Rating </button>
                             <div className="dropdown_content_1">
@@ -106,7 +106,7 @@ const Home =({user,filter})=>{
                                 <p> Deliver Now</p>
                                 <p> Plan for later</p>
                             </div>
-                    </div>*/} 
+                    </div>  */}
                 </div>
                 <div className="card_rows">
                     {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}

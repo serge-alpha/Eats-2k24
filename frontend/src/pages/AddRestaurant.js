@@ -86,14 +86,25 @@ const AddRestaurant = ({user})=>{
             <h3>Add  Your Restaurant</h3>
             <form className="login_form add_rest" onSubmit={handleSubmit}>    
                     <input type="text" placeholder="Name(name of restuarant or your name)" className="login_input" name="name" onChange={handleRestNameChange} value={restaurant_name} required/>
-                    <span className="restuarant_checkbox" required >
-                        <input type="radio"  className="login_input" name="delivery" value="Pickup" onChange={handleDeliveryTypeChange} />
-                        <label for="pick_up">PickUp  </label><br/>
-                        <input type="radio"  className="login_input" name="delivery" value="Delivery" onChange={handleDeliveryTypeChange}/>
-                        <label for="delivery">Delivery</label><br/>
-                        <input type="radio" className="login_input" name="delivery" value="Both" onChange={handleDeliveryTypeChange}/>
-                        <label for="delivery">Both</label><br/>
-                    </span>                  
+                    <span>
+                        <p>What's your delivery Choice?</p>
+                        <span className="restuarant_checkbox" required >
+                            <span className="checkbox">
+                                <input type="radio"  className="login_input" name="delivery" value="Pickup" onChange={handleDeliveryTypeChange} />
+                                <label for="pick_up">PickUp  </label><br/>
+                            </span>
+                            <span className="checkbox">
+                                <input type="radio"  className="login_input" name="delivery" value="Delivery" onChange={handleDeliveryTypeChange}/>
+                                <label for="delivery">Delivery</label><br/>
+                            </span>
+                            <span className="checkbox">
+                                <input type="radio" className="login_input" name="delivery" value="Both" onChange={handleDeliveryTypeChange}/>
+                                <label for="delivery">Both</label><br/>
+                            </span>
+                        </span> 
+                       
+                    </span>
+                     <hr />
                     <span className="restuarant_dist">
                         <label for="dist">How many kilometers are you willing to move to do a delivery?</label><br/>
                         <select  id="dist" value={delivery_distance} onChange={handleDeliveryDistanceChange} required>
