@@ -53,7 +53,7 @@ const FoodModal=({view,item})=>{
             </div>
             <div className="modal_body">
                 <div className="modal_img">
-                <img src={`https://eatsbackend.onrender.com/api/meal/images${item.image}`} alt={item.name}/>
+                <img src={`https://eatsbackend.onrender.com/meal/images${item.image}`} alt={item.name}/>
                 </div>
                 <div className="modal_info">
                     <span>

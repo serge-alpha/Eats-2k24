@@ -30,7 +30,7 @@ const FoodcardR =({item,rest})=>{
 
                             </div>
                         </div>
-                        <img src={`https://eatsbackend.onrender.com/api/meal/images${item.image}`} alt={item.name}/>
+                        <img src={`https://eatsbackend.onrender.com/meal/images${item.image}`} alt={item.name}/>
                 </div>
             </NavLink>
             <div className="card_info">
