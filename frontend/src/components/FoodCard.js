@@ -53,7 +53,7 @@ const Foodcard =({modal,item,view,chef})=>{
                         <span>{chef?chef.delivery_type:""}</span>
                     </div>
                 </div>
-            <img src={`http://localhost:3001/meal/images${item.image}`} alt={item.name}/>
+            <img src={`https://eatsbackend.onrender.com/api/meal/images${item.image}`} alt={item.name}/>
                 
             </div>
             <div className="card_info">
