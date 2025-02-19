@@ -3,7 +3,7 @@ import { BsPersonWalking } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { UpdateMeal } from "../services/meal";
 
-const FoodcardR =({item})=>{
+const FoodcardR =({item,rest})=>{
     const [availabilty,setAvailability]=useState(item.availability)
     const avialable=()=>{
         if (availabilty){
@@ -19,16 +19,18 @@ const FoodcardR =({item})=>{
         <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
             <NavLink to="/restaurant/add-meal"> 
                 <div className="card_body">
-                        <div className="card_head">
+                        {/* <div className="card_head">
                             <span>Special offer</span>
                             <span></span>
-                        </div>
+                        </div> */}
                         <div className="card_order" >
                             <div className="card_ordertype" >
                                 <span><BsPersonWalking /></span>
-                                <span>PickUp only</span>
+                                <span>{rest?" ."+rest.delivery_type:""}</span>
+
                             </div>
                         </div>
+                        <img src={`http://localhost:3001/meal/images${item.image}`} alt={item.name}/>
                 </div>
             </NavLink>
             <div className="card_info">

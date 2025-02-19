@@ -35,7 +35,7 @@ export const LoginUser=async(data)=>{
 }
 export const LogOutUser=async()=>{
     try {
-        const response=await axios.post(address+'logout',{
+        const response=await axios.get(address+'logout',{
             withCredentials:true
         });
         return(response.data)

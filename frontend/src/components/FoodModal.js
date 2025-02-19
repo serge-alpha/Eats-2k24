@@ -5,10 +5,12 @@ import { IconContext } from "react-icons";
 import {useDispatch} from "react-redux";
 import { addMealToCart } from "../store/features/mealSlice";
 
-const FoodModal=({view,item,chef})=>{ 
+const FoodModal=({view,item})=>{ 
     // value represents the item data while triger is used to actvate the useeffect in Nav
     const [quantity, setQuantity]=useState(1);
     const [cartItem,setCartItem]=useState({value:1,item});
+    const[delivery,setDelivery]=useState("");
+    const [order,setOrder]=useState(false);
     const dispatch = useDispatch();
 
     // Funtion updates the item data 
@@ -22,7 +24,12 @@ const FoodModal=({view,item,chef})=>{
     //Order is  a function from nav that takes meal's data
     useEffect(()=>{
         setCartItem({value:quantity,item});
+        // console.log(chef)
+        item.chefDetails?setDelivery(item.chefDetails.delivery_type):setDelivery("");
+        
     },[item,quantity])
+
+    // delivery==="Delivery"?setOrder(true):setOrder(false);
     const AddToCart=()=>{
         console.log(cartItem)
         dispatch(addMealToCart(cartItem)); 
@@ -33,7 +40,11 @@ const FoodModal=({view,item,chef})=>{
         setQuantity(1);
         view("close");   
     }
-//    console.log(item);
+    const handleDelivery=()=>{
+        order===true?setOrder(false) :setOrder(true);
+    } 
+    console.log(item);
+//    console.log(delivery);
   
     return(
         <div className="modal">
@@ -42,17 +53,24 @@ const FoodModal=({view,item,chef})=>{
             </div>
             <div className="modal_body">
                 <div className="modal_img">
-                    <image src="#" alt="image" />
+                <img src={`http://localhost:3001/meal/images${item.image}`} alt={item.name}/>
                 </div>
                 <div className="modal_info">
                     <span>
-                        <h3>{item.name} <br/>{chef?<small>By {chef.restaurant_name===""?chef.name:chef.restaurant_name}</small>:<></>}</h3>
-                       
-                        <h4>{item.price}XFA</h4>
+                        <h3>{item.name} <br/>{item.chefDetails?<small>By {item.chefDetails.restaurant_name===""?item.chefDetails.name:item.chefDetails.restaurant_name}</small>:<></>}</h3>
+                        
+                        
                     </span>
                     
-                        <small>{item.description}</small>
+                        <p><b>{item.description}</b></p>
+                        <hr></hr>   
+                    {delivery==="Both"?<span className="checkbox">
+                            <input type="checkbox"  name="delivery"  onChange={handleDelivery}/>
+                            <label for="delivery">Delivery</label><br/>
+                    </span>:""}
                     
+                    <h5>{order===true?"Price+Delivery:"+(item.delivery_price+item.price):"Price: "+item.price}XFA</h5>
+                    {order===false?<small>Self pick up from vendor's location</small>:<small>Delivery fees included</small>}
                     <span className="modal_quantity">
                         <h4>Quantity</h4>
                         <span className="quantity" onClick={()=>quantityOnChange(-1)}><IconContext.Provider value={{size:"1.5em"}}><BsCaretLeftFill /></IconContext.Provider></span>

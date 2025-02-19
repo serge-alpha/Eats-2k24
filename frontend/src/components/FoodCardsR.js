@@ -6,6 +6,7 @@ import { getAllRest } from "../services/rest";
 
 const FoodcardRs =({user,mealList})=>{
     const [meals,setMeals]=useState([]);
+    const [rest,setRest]=useState({});
     useEffect(()=>{
         const fetch=async()=>{
             try {
@@ -14,7 +15,7 @@ const FoodcardRs =({user,mealList})=>{
                     return user.id===rest.chef;
                 });
                 setMeals(rest.meals);
-                
+                setRest(rest);
             } catch (error) {
                 toast(error.msg, {
                     position: "top-right",
@@ -41,7 +42,7 @@ const FoodcardRs =({user,mealList})=>{
                 const item= mealList.find((item)=>{
                     return (item.id===meal)
                 });
-                return(item?<FoodcardR  item={item}/>:<></>);
+                return(item?<FoodcardR  item={item} rest={rest}/>:<></>);
             })}       
         
         </div>
