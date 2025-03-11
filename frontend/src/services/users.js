@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const address="http://localhost:3001/api/user/";
-// const address='https://eatsbackend.onrender.com/api/user/';
+// const address="http://localhost:3001/api/user/";
+const address='https://eatsbackend.onrender.com/api/user/';
 export const createUser=async(data)=>{
     try {
         const response=await axios.post(address,data);

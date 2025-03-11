@@ -1,8 +1,8 @@
 import axios from "axios"
 
 
-const address="http://localhost:3001/api/meal/";
-// const address='https://eatsbackend.onrender.com/api/meal/';
+//const address="http://localhost:3001/api/meal/";
+const address='https://eatsbackend.onrender.com/api/meal/';
 export const createMeal=async(data)=>{
     try {
         const response=await axios.post(address,data,{

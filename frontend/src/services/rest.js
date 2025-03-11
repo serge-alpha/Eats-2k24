@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const address="http://localhost:3001/api/restuarant/";
-// const address= 'https://eatsbackend.onrender.com/api/restuarant/';
+// const address="http://localhost:3001/api/restuarant/";
+const address= 'https://eatsbackend.onrender.com/api/restuarant/';
 
 export const createRest=async(data)=>{
     try {
