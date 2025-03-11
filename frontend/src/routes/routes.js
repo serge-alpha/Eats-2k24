@@ -19,6 +19,8 @@ const Index=()=>{
     const [filter,setFilter] =useState('');
     //// we need to change the state to false by defualt.... we changed it to true for testing
     const [isLogin,setIsLogin] =useState(false);
+    //const address="https://eatsbackend.onrender.com";
+    const address="http://localhost:3001";
   
 //check and update user login state
     const User =(data)=>{   
@@ -38,12 +40,12 @@ const Index=()=>{
                     <Route path="/login" element={<Login getUser={User}/>}/>
                     <Route path="/auth/activate/:token" element={<Verify/>}/>
                     {/* <Route path="/home" element={ <Home getOrder={Order} user={user} mealList={mealList}/> }/> */}
-                    <Route path="/home" element={isLogin? <Home  user={user} filter={filter}/>:<StartPage/> }/>
-                    <Route path="/home-cart" element={ <Cart/> }/>
+                    <Route path="/home" element={isLogin? <Home  user={user} filter={filter} address={address}/>:<StartPage/> }/>
+                    <Route path="/home-cart" element={ isLogin?<Cart address={address}/>:<StartPage/> }/>
                     <Route path="/register" element={<Register/>}/>
-                    <Route path="/add-restaurant" element={<AddRestaurant user={user}/>}></Route>
-                    <Route path="/restaurant" element={<Restaurant user={user}/>}></Route>
-                    <Route path="/restaurant/add-meal" element={<AddMeal/>}></Route>    
+                    <Route path="/add-restaurant" element={ isLogin?<AddRestaurant user={user}/>:<StartPage/>}></Route>
+                    <Route path="/restaurant" element={ isLogin?<Restaurant user={user}/>:<StartPage/>}></Route>
+                    <Route path="/restaurant/add-meal" element={ isLogin?<AddMeal/>:<StartPage/>}></Route>    
             </Routes>
         </BrowserRouter>
     )

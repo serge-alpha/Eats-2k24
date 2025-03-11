@@ -7,7 +7,7 @@ import { getAllRest } from "../services/rest";
 // import { FaStar } from "react-icons/fa";
 
 
-const Home =({user,filter})=>{
+const Home =({user,filter,address})=>{
     const [chefs,setChefs]=useState([]);
     const [userdata,setUserData]=useState();
     //const[mealStatus,setMealStatus]=useState(false);
@@ -110,11 +110,11 @@ const Home =({user,filter})=>{
                 </div>
                 <div className="card_rows">
                     {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}
-                    <FoodCards meals={mealList} chefs={chefs} filter={filter}/>
+                    <FoodCards meals={mealList} chefs={chefs} filter={filter} address={address}/>
                 </div>
                 
             </div>
-            <Footer user={userdata}/>
+            <Footer user={userdata} />
         </div>
         
     )

@@ -11,6 +11,7 @@ const AddMeal=()=>{
     const [name,setName]=useState("");
     const [price,setPrice]=useState();
     const [image,setImage]=useState();
+    const [displayimage,setDisplayImage]=useState();
     const [category,setCategory]=useState();
     const [delivery_price,setDeliveryPrice]=useState();
     const [description,setDescription]=useState();
@@ -19,7 +20,10 @@ const AddMeal=()=>{
         setName(event.target.value);
     };
     const handleImageChange=(event)=>{
+       if (event.target.files && event.target.files[0]) {
+       setDisplayImage(URL.createObjectURL(event.target.files[0]));
         setImage(event.target.files[0]);
+        }
         console.log(image);
     }
     const handleCategoryTypeChange=(event)=>{
@@ -79,8 +83,13 @@ const AddMeal=()=>{
             </span> value={image}*/}
             <span className="meal_img">
                 <input type="file" accept="image/*" capture="camera"  onChange={handleImageChange} required></input>
-                <BsXCircle/>
-                <h5>Add meal Image</h5>
+               {image?
+                <div className="modal_img"><img src={displayimage} alt="preview meal"/></div>
+                :<>
+                    <BsXCircle/>
+                    <h5>Add meal Image</h5>
+               </>}
+                
             </span>
             <form className="add_meal login_form" onSubmit={handleSubmit}> 
                     <h3>Add  Meal</h3>    

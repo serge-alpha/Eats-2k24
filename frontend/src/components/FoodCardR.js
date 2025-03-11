@@ -3,6 +3,8 @@ import { BsPersonWalking } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { UpdateMeal } from "../services/meal";
 
+    // const address="https://eatsbackend.onrender.com/meal/images";
+    const address="http://localhost:3001/meal/images";
 const FoodcardR =({item,rest})=>{
     const [availabilty,setAvailability]=useState(item.availability)
     const avialable=()=>{
@@ -30,7 +32,7 @@ const FoodcardR =({item,rest})=>{
 
                             </div>
                         </div>
-                        <img src={`https://eatsbackend.onrender.com/meal/images${item.image}`} alt={item.name}/>
+                        <img src={`${address}${item.image}`}  alt={item.name}/>
                 </div>
             </NavLink>
             <div className="card_info">
