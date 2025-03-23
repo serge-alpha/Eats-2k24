@@ -10,7 +10,9 @@ export const createMeal=async(data)=>{
         } );
         console.log(response);
     } catch (error) {
+        console.log(error);
         throw error.response.data;
+        
     }
 }
 
