@@ -9,17 +9,17 @@ const FoodcardR =({item,rest})=>{
     const [availabilty,setAvailability]=useState(item.availability)
     const avialable=()=>{
         if (availabilty){
-            UpdateMeal({availability:false},item.slug);
+            UpdateMeal({availability:false},item.id);
            return setAvailability(false)
         }else{
-            UpdateMeal({availability:true},item.slug);
+            UpdateMeal({availability:true},item.id);
            return  setAvailability(true)
         }
         
     }
     return(
         <div className="card" data-bs-toggle="modal" data-bs-target="#myModal"> 
-            <NavLink to="/restaurant/add-meal"> 
+            <NavLink to="/restaurant/add-meal" state={{item,address}}> 
                 <div className="card_body">
                         {/* <div className="card_head">
                             <span>Special offer</span>
@@ -33,6 +33,7 @@ const FoodcardR =({item,rest})=>{
                             </div>
                         </div>
                         <img src={`${address}${item.image}`}  alt={item.name}/>
+                
                 </div>
             </NavLink>
             <div className="card_info">

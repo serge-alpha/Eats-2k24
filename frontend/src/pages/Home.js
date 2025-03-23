@@ -7,15 +7,15 @@ import { getAllRest } from "../services/rest";
 // import { FaStar } from "react-icons/fa";
 
 
-const Home =({user,filter,address})=>{
+const Home =({user,filter,address,getCategoryFilterValue,category_filter})=>{
     const [chefs,setChefs]=useState([]);
     const [userdata,setUserData]=useState();
+    const [categoryFilter,setCategoryFilterValue]=useState('')
     //const[mealStatus,setMealStatus]=useState(false);
 
     const[mealList,setMeals] =useState([]);
     
-    
-
+    getCategoryFilterValue(categoryFilter);
     useEffect(()=>{
         const getmeals=async()=>{
              const list =await getAllMeals();
@@ -59,18 +59,22 @@ const Home =({user,filter,address})=>{
                         />
             <div className="home" >
                 <div className="quick_filter">
-                    <span className="filter">
+                    <span className="filter" onClick={()=>{setCategoryFilterValue("Fast Food")}}>
                         <div className="fast_food"></div>
                         <h5>FastFood</h5>
                     </span>
-                    <span className="filter">
+                    <span className="filter" onClick={()=>{setCategoryFilterValue("Lunch")}}>
                         <div className="lunch" alt="lunch"></div>
                         <h5>Lunch</h5>
                     </span>
-                    <span className="filter">
+                    <span className="filter" onClick={()=>{setCategoryFilterValue("Pastry")}}>
                         <div className="pastry" alt="pastries"></div> 
                         <h5>Pastries</h5>
                     </span>
+                {categoryFilter!==""?<span className="filter" onClick={()=>{setCategoryFilterValue("")}}>
+                        <div className="reset" alt="reset"></div> 
+                        <h5>Reset Filter</h5>
+                    </span>:<></>}
                 </div>
                 <div className="category_filter">
                     <hr/>
@@ -110,7 +114,7 @@ const Home =({user,filter,address})=>{
                 </div>
                 <div className="card_rows">
                     {/* <h2><b>Deliveries for less than 1000 CFA</b></h2> */}
-                    <FoodCards meals={mealList} chefs={chefs} filter={filter} address={address}/>
+                    <FoodCards meals={mealList} chefs={chefs} filter={filter} address={address} category_filter={category_filter}/>
                 </div>
                 
             </div>

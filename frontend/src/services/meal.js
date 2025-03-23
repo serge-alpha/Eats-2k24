@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-//const address="http://localhost:3001/api/meal/";
+// const address="http://localhost:3001/api/meal/";
 const address='https://eatsbackend.onrender.com/api/meal/';
 export const createMeal=async(data)=>{
     try {
@@ -23,9 +23,9 @@ export const getAllMeals=async()=>{
     }
 }
 
-export const UpdateMeal=async(data,slug)=>{
+export const UpdateMeal=async(data,id)=>{
     try {
-        const response=await axios.put(address+`${slug}`,data,{
+        const response=await axios.put(address+`${id}`,data,{
             withCredentials:true
         });
         return( response.data)
