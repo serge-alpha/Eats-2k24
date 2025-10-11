@@ -1,17 +1,22 @@
- import React , { useState } from "react";
+ import React , { useEffect, useState } from "react";
  import { AiOutlineUser } from "react-icons/ai";
 //  import { AiOutlineMenu} from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { MdRestaurantMenu } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { GrRestaurant } from "react-icons/gr";
+import { IconContext } from "react-icons";
 // import { BsCart,BsFillCartFill,BsDot } from "react-icons/bs";
 import { BsCart,BsFillCartFill} from "react-icons/bs";
 import { LogOutUser } from "../services/users";
 import { useSelector } from "react-redux";
 
- const Nav =({isLogin,setIsLogin,getFilterValue})=>{
-    const navigate=useNavigate();
+ const Nav =({isLogin,setIsLogin,getFilterValue,user})=>{
+    const navigate=useNavigate([]);
+    const [userdata,setUserData]=useState();
+    useEffect(()=>{
+        setUserData(user)
+    },[user]);
     const {meals} = useSelector(status=>status.meal);
     // const [filter,setFilter]=useState('');
     // const setFilterValue=()=>{
@@ -116,7 +121,7 @@ import { useSelector } from "react-redux";
             navigate("/login");
         }
     }
-// console.log(filter);
+ console.log(userdata);
     return(
         <div className="nav">
             <span className="nav_menu"><b className="nav_menubar" onClick={menuState}>
@@ -190,12 +195,24 @@ import { useSelector } from "react-redux";
                     <hr></hr>
                     <button type="submit" className="button nav_edit_btn" onClick={menuState}> <b>Done</b></button>
                 </div>
-            </div> */}
-            <span>{isLogin?<button className="button"><NavLink to="/restaurant" className="nav_reg" ><GrRestaurant/><p> Restaurant</p></NavLink></button>:<></>}
-                {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{meals.length<1?<BsCart/>:<BsFillCartFill />}<p> Order</p></NavLink></button>:<></>}
-                
+            </div>*/}
+            
+            <span>
+                {isLogin?<button className="button"><NavLink to="/home-cart" className="nav_reg" >{meals.length<1?
+                <IconContext.Provider value={{size:"1.3rem"} }>
+                    <BsCart/>
+                </IconContext.Provider>:<IconContext.Provider value={{color:"#e9981e", size:"1.3rem"} }>
+                    <BsFillCartFill />
+                </IconContext.Provider>}</NavLink></button>:<></>}
+                {isLogin?<button className="button"><NavLink to={userdata.is_Chef?"/restaurant":"/add-restaurant"}  className="nav_reg" ><IconContext.Provider value={{size:"1.3rem"} }>
+                <GrRestaurant/>
+                </IconContext.Provider><p> Restaurant</p></NavLink></button>:<></>}
                 <button onClick={LoginLogout} className="button">
-                    {isLogin?<NavLink className="nav_reg"><CiLogout/><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><AiOutlineUser/><p>Login</p></NavLink>}
+                    {isLogin?<NavLink className="nav_reg"><IconContext.Provider value={{size:"1.3rem"} }>
+               <CiLogout/>
+            </IconContext.Provider><p>Logoout</p></NavLink>:<NavLink className="nav_reg"><IconContext.Provider value={{size:"1.3rem"} }>
+                <AiOutlineUser/>
+            </IconContext.Provider><p>Login</p></NavLink>}
                 </button>
             </span>
             

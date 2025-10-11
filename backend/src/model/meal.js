@@ -26,6 +26,11 @@ const mealSchema=new Schema({
         trim:true,
         default:500,
     },
+    category:{
+        type: String,
+        trim:true,
+        required:[true,"category is required"],
+    },
     description:{
         type: String,
         required:[true,'description of meal is required'],

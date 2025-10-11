@@ -229,10 +229,9 @@ const loginUser = async(req, res, next) => {
 const logoutUser=async(req,res)=>{
     try {
         if(req.headers.cookie){
-            const id=req.headers.cookie;
-            // await User.findOneAndUpdate({id})
-            res.clearCookie(id)
-            User.findOneAndUpdate({id},{is_Login:false});
+            const id=getId(req);
+            res.clearCookie(id);
+            await User.findOneAndUpdate({id},{is_Login:false});
             res.status(200).json({message:"Logout succesful"}) 
         }else{
             res.status(404).json({message:"You are logged out . Please log in"})

@@ -6,7 +6,7 @@ const fileSize=1024*1024*2;
 
 const storageUser= multer.diskStorage({
     destination:(req,file,cd)=>{
-        cd(null, path.join( __dirname ,"../public/user/images"));
+        cd(null, path.join( __dirname ,"../../public/user/images"));
     },
     filename:(req,file,cd)=>{
         cd(null,file.originalname);
@@ -15,7 +15,7 @@ const storageUser= multer.diskStorage({
 
 const storageMeal= multer.diskStorage({
     destination:(req,file,cd)=>{
-        cd(null, path.join( __dirname ,"../public/meal/images"));
+        cd(null, path.join( __dirname ,"../../public/meal/images"));
     },
     filename:(req,file,cd)=>{
         cd(null,file.originalname);

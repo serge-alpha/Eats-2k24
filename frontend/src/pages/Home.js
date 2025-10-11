@@ -60,19 +60,15 @@ const Home =({user,filter,address,getCategoryFilterValue,category_filter})=>{
             <div className="home" >
                 <div className="quick_filter">
                     <span className="filter" onClick={()=>{setCategoryFilterValue("Fast Food")}}>
-                        <div className="fast_food"></div>
                         <h5>FastFood</h5>
                     </span>
                     <span className="filter" onClick={()=>{setCategoryFilterValue("Lunch")}}>
-                        <div className="lunch" alt="lunch"></div>
                         <h5>Lunch</h5>
                     </span>
                     <span className="filter" onClick={()=>{setCategoryFilterValue("Pastry")}}>
-                        <div className="pastry" alt="pastries"></div> 
                         <h5>Pastries</h5>
                     </span>
                 {categoryFilter!==""?<span className="filter" onClick={()=>{setCategoryFilterValue("")}}>
-                        <div className="reset" alt="reset"></div> 
                         <h5>Reset Filter</h5>
                     </span>:<></>}
                 </div>

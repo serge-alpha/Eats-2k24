@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const corsOptions ={
-    origin:'https://eats-2k24.onrender.com', 
+    origin:"https://eats-2k24.onrender.com",
+    origin:"http://localhost:3000", 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -17,11 +18,13 @@ const mealRouter = require('./routes/meal');
 const restRouter = require('./routes/rest');
 const port = dev.app.serverPort;
 const app = express();
+const path = require('path');
 
 app.use(cors(corsOptions));
 app.use(morgan("dev"))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, '../public')));
 
 
 app.use('/api/user',userRouter);

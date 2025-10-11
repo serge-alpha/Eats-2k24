@@ -38,7 +38,7 @@ const Index=()=>{
   console.log(filter)
     return(
         <BrowserRouter>
-            <Nav isLogin={isLogin} setIsLogin={setIsLogin} getFilterValue={getFilterValue} getCategoryFilterValue={getCategoryFilterValue}/>
+            <Nav isLogin={isLogin} setIsLogin={setIsLogin} getFilterValue={getFilterValue} user={user} getCategoryFilterValue={getCategoryFilterValue}/>
             <Routes>
                     <Route path="/" element={<StartPage/>}/>
                     <Route path="/login" element={<Login getUser={User}/>}/>
