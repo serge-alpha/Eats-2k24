@@ -19,7 +19,7 @@ const Index=()=>{
     const [filter,setFilter] =useState("");
     const [category_filter,setCategory_Filter] =useState("");
     //// we need to change the state to false by defualt.... we changed it to true for testing
-    const [isLogin,setIsLogin] =useState(false);
+    const [isLogin,setIsLogin] =useState(true);
     const address="https://eatsbackend.onrender.com";
     // const address="http://localhost:3001";
   
